@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cheatsheet title="Partage d'expérience"
+	description="&lt;form&gt;
+		&lt;p&gt;Ce tutoriel va vous montrer comment partager vos expériences.&lt;/p&gt;
+		&lt;p&gt;Vous devez tout d'abord définir au moins un compte utilisateur qui aura la permission de se connecter sur votre ordinateur où vous aurrez lancé un serveur FTP.
+		Une fois connecté au serveur, cet utilisateur, ce client, pourra voir les expériences que vous aurez choisies de partager. Parmi celles-ci, il pourra choisir les fichiers qu'il souhaite 
+		télécharger sur son ordinateur, dans une expérience de même type qu'il aura présélectionnée au préalable.&lt;/p&gt;
+		&lt;p&gt;Il est bien sûr possible que l'utilisateur choisissent des fichiers portant le même nom que certains déjà présents dans l'expérience
+		présélectionnée. S'il s'agit d'un Sujet, rien ne sera copié : aucun fichier de données local au client ne peut être écrasé par un téléchargement. Dans les autres cas, 
+		le fichier local au client sera écrasé lors du téléchargement&lt;/p&gt;
+		&lt;/form&gt;">
+	<step title="Ajout des utilisateurs"
+		description="&lt;form&gt;
+		&lt;p&gt;Tapez &lt;b&gt;PREF_KEY&lt;/b&gt; pour accéder aux pages des préférences. Dans les préférences de partage, 
+		ajoutez autant de login et de mots de passe que vous souhaitez. Vous devrez les communiquer aux personnes avec qui vous partagerez.&lt;/p&gt;
+		&lt;/form&gt;" />
+	<step title="Choix des expériences partagées et lancement du serveur"
+		description="&lt;form&gt;
+		&lt;p&gt;Ouvrez la vue de partage en cliquant sur &lt;b&gt;Montrer la vues des partages&lt;/b&gt; dans le menu &lt;b&gt;Vues&lt;/b&gt;.
+		La vue peut être un peu longue à apparaître parce qu'elle récupère à ce momment là votre adresse IP. Elle comporte deux onglets : le premier est 
+		relatif au serveur et le second au client.&lt;/p&gt;
+		&lt;p&gt;Sélectionnez l'onglet &lt;b&gt;serveur&lt;/b&gt; si ce n'est pas déjà fait. Notez votre IP présent dans le titre de cet onglet. 
+		Ce dernier est partagé en trois parties. La première, la plus à gauche, liste les expériences partagée. La partie centrale montre les utilisateurs 
+		connectés à votre serveur de partage et la partie de droite vous informe sur son état.&lt;/p&gt;
+		&lt;p&gt;Cliquez alors sur l'icône &lt;img href=&quot;ADD_ICON&quot;/&gt; pour sélectionner les expériences que vous souhaitez partager (si vous avez suivi
+		le tutoriel de démarrage rapide, sélectionnez l'expérience nommé &quot;&lt;b&gt;Experiment&lt;/b&gt;&quot;).
+		Elles apparaîtront dans cette liste une fois le dialogue de sélection d'expériences fermé. Cliquez enfin sur l'icône &lt;img href=&quot;START_SERVER_ICON&quot;/&gt; 
+		pour démarrer le partage. Un message devrait vous dire que le serveur est correctement démarré. Vous pouvez l'arrêter à tout moment.
+		&lt;/p&gt;&lt;/form&gt;" />
+	<step title="Connection du client"
+		description="&lt;form&gt;
+		&lt;p&gt;Sélectionnez maintenant l'onglet &lt;b&gt;Client&lt;/b&gt;. Cet onglet est également constitué de trois parties. La partie de gauche
+		liste les expériences partagées distantes (sur le serveur). La partie centrale donne la liste des fichiers distants présents dans l'expérience
+		sélectionnée. La partie de droite affiche les messages relatifs au client.&lt;/p&gt;
+		&lt;p&gt;Vous allez maintenant vous connecter sur votre serveur. Pour ce faire, entrez l'IP que vous
+		avez relevé dans le titre de l'onglet serveur puis cliquez sur l'icône &lt;img href=&quot;CONNECT_SERVER_ICON&quot;/&gt; pour initier la connection. Entrez alors un login et un mot de passe
+		faisant partie de la liste des utilisateurs autorisés (Cf. étape ajout des utilisateurs). Une fois le dialogue de login fermé, le client devrait montrer un message
+		sur l'état de la connection avec le serveur.
+		&lt;/p&gt;&lt;/form&gt;" />
+	<step title="Sélection des fichiers à télécharger"
+		description="&lt;form&gt;
+		&lt;p&gt;
+		Pour continuer vous devez avoir suivi le tutoriel de démarrage rapide.&lt;/p&gt;
+		&lt;p&gt;
+		La liste des expériences partagées distantes est alors mise à jour. Sélectionnez &quot;&lt;b&gt;Experiment&lt;/b&gt;&quot; dans cette liste pour mettre
+		à jour la liste des fichiers distants. Créez une nouvelle expérience vide (sans sujets) portant le nom &quot;&lt;b&gt;Experiment2&lt;/b&gt;&quot; de type
+		&quot;&lt;b&gt;ANALYSE&lt;/b&gt;&quot;. Avant de cliquer sur le bouton d'importation, sélectionnez &quot;&lt;b&gt;Experiment2&lt;/b&gt;&quot; dans la boîte déroulante
+		comme expérience de destination locale. Cliquer maintenant sur le bouton d'importation &lt;img href=&quot;IMPORT_ICON&quot;/&gt; et lisez bien le message qui apparaît ;-) (Cf. introduction de ce tutoriel).
+		&lt;/p&gt;
+		&lt;/form&gt;" />
+</cheatsheet>

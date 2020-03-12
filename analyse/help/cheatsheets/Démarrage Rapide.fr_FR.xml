@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cheatsheet title="Démarrage Rapide"
+	description="&lt;form&gt;
+		&lt;p&gt;Ce tutoriel va vous guider pour démarrer rapidement avec Analyse.&lt;/p&gt;
+		&lt;p&gt;Vous allez créer une nouvelle expérience comportant un unique sujet. Vous créerez ensuite votre premier graphe pour visualiser ses données. 
+		Enfin après un traitement classique, vous exporterez des données. Mais configurons tout d'abord le moteur mathématique.&lt;/p&gt;
+		&lt;/form&gt;">
+	<step title="Configuration du moteur mathématique"
+		description="&lt;form&gt;
+		&lt;p&gt;Tapez &lt;b&gt;PREF_KEY&lt;/b&gt; pour accéder aux pages des préférences. Dans les préférences générales, 
+		sélectionnez le moteur mathématique que vous souhaitez utiliser (Octave ou Matlab).&lt;/p&gt;
+		&lt;li&gt;Octave ou Matlab sous Mac uniquement :&lt;/li&gt;&lt;br/&gt; 
+		&lt;p&gt;Certaines versions de Matlab ou d'Octave ne vous permettront pas de sélectionner son exécutable (dossiers d'extension &lt;b&gt;&quot;.app&quot;&lt;/b&gt; &quot;considérés&quot; comme une application).
+		Dans ce cas, assurez-vous que vous pouvez démarrer le moteur mathématique en ligne de commande : taper &lt;span font=&quot;code&quot;&gt;matlab&lt;/span&gt; ou 
+		&lt;span font=&quot;code&quot;&gt;octave&lt;/span&gt; dans une console. Si rien ne démarre, il vous faudra configuer vos options
+		d'environnement avant de continuer. Vous pouver aussi créer un lien symbolique entre l'exécutable 'matlab' ou 'octave' présent dans le répertoire 'bin' de l'installation Matlab ou Octave et
+		'matlab' ou 'octave' dans le répertoire '/usr/bin' qui fait toujours partie de la variable d'environnement PATH (pour Mac cherchez dans 'Matlab.app/bin/' 'Octave.app/Contents/Resources/bin/' pour Linux c'est en
+		général déjà fait).&lt;/p&gt;
+		&lt;li&gt;Matlab Sous Windows uniquement :&lt;/li&gt;&lt;br/&gt;
+		&lt;p&gt;Le serveur COM doit être enregistré. Pour ce faire ou dans le doute, dans une fenêtre console, taper &lt;span font=&quot;code&quot;&gt;matlab -regserver&lt;/span&gt;, 
+		puis quitter Matlab. C'est fait !&lt;/p&gt;
+		&lt;p&gt;Au final, si en cliquant sur l'icone &lt;img href=&quot;RUN_ICON&quot;/&gt; (ou menu &lt;b&gt;Outils &gt; Démarrer le moteur Mathématique&lt;/b&gt;), le moteur mathématique démarre : vous aurez des 
+		informations dans la vue des messages, c'est gagné. Sinon vérifiez bien les étapes précédentes et, dans les préférences, essayez de faire pointer le chemin de l'exécutable correspondant au bon endroit.&lt;/p&gt;
+		&lt;/form&gt;" />
+	<step title="Création de l'expérience"
+		description="&lt;form&gt;&lt;p&gt;
+		Tapez &lt;b&gt;CTRL_KEY+N&lt;/b&gt; ou menu &lt;b&gt;Expériences &gt; Nouvelle expérience&lt;/b&gt;. Entrez &quot;&lt;b&gt;Experiment&lt;/b&gt;&quot; comme nom d'expérience et choisissez le type
+		&lt;b&gt;ANALYSE&lt;/b&gt;. Cliquez maintenant sur le bouton &quot;&lt;b&gt;Ajouter&lt;/b&gt;&quot; pour ajouter un sujet. Dans la nouvelle fenêtre, cliquer sur le bouton &quot;&lt;b&gt;Parcourir&lt;/b&gt;&quot; 
+		pour sélectionner le répertoire &lt;b&gt;ANALYSE_DEMO_DIRECTORY&lt;/b&gt;. Cochez le sujet nommé &lt;b&gt;Subject1&lt;/b&gt; et cliquez sur &lt;b&gt;OK&lt;/b&gt; puis &lt;b&gt;Terminer&lt;/b&gt;.
+		&lt;/p&gt;&lt;/form&gt;" />
+
+	<step title="Chargement du Sujet"
+		description="&lt;form&gt;&lt;p&gt;
+		Dans la vue des expériences, sélectionner le sujet &lt;b&gt;Subject1&lt;/b&gt; et taper &lt;b&gt;CTRL_KEY+L&lt;/b&gt; ou menu &lt;b&gt;Expériences &gt; Charger Sujet&lt;/b&gt;.
+		L'icône &lt;img href=&quot;LOADED_ICON&quot;/&gt; devrait apparaitre sur l'icône de sujet  &lt;img href=&quot;SUBJECT_ICON&quot;/&gt;, signifiant que ce dernier a bien été chargé.
+		On peut utiliser le raccourci &lt;img href=&quot;LOAD_ICON&quot;/&gt; pour charger ou décharger des sujets.
+		&lt;/p&gt;&lt;/form&gt;" />
+
+	<step title="Inspection des données"
+		description="&lt;form&gt;
+		&lt;p&gt;
+		Lorsqu'un sujet est chargé et sélectionné dans la vue des expériences, vous pouvez observer ses données dans les vues &lt;b&gt;signaux&lt;/b&gt;, &lt;b&gt;catégories&lt;/b&gt; et &lt;b&gt;apperçu des signaux&lt;/b&gt;.
+		L'ensemble &quot;Signaux + Catégories&quot; forment les canaux et en utilisant l'icône &lt;img href=&quot;DELETE_ICON&quot;/&gt;, il est possible de supprimer les canaux sélectionnés.
+		&lt;/p&gt;
+		&lt;li&gt;La vue des signaux :&lt;/li&gt;&lt;br/&gt;
+		&lt;p&gt;
+		Cette vue donne la liste des signaux relatifs au sujet sélectionné. Lorsqu'un signal est sélectionné dans cette liste, la fréquence d'échantillonnage, le nombre d'essais et des informations relatives aux essais, aux 
+		champs et aux marqueurs sont disponibles.
+		&lt;/p&gt;
+		&lt;li style=&quot;text&quot; bindent=&quot;20&quot; indent=&quot;35&quot; value=&quot;1.&quot;&gt;
+		Avant coupe
+		&lt;/li&gt;
+		&lt;p&gt;
+		C'est l'indice au delà duquel les échantillons du signal sont pris en compte lors de l'affichage et du traitement.
+		&lt;/p&gt;
+		&lt;li style=&quot;text&quot; bindent=&quot;20&quot; indent=&quot;35&quot; value=&quot;2.&quot;&gt;
+		Après coupe
+		&lt;/li&gt;
+		&lt;p&gt;
+		C'est l'indice au delà duquel les échantillons du signal ne sont plus pris en compte lors de l'affichage et du traitement.
+		&lt;/p&gt;
+		&lt;li style=&quot;text&quot; bindent=&quot;20&quot; indent=&quot;35&quot; value=&quot;3.&quot;&gt;
+		Champs
+		&lt;/li&gt;
+		&lt;p&gt;
+		Les champs sont des grandeurs associé à chaque essai. Par exemple le maximum absolu, la moyenne etc.
+		&lt;/p&gt;
+		&lt;li style=&quot;text&quot; bindent=&quot;20&quot; indent=&quot;35&quot; value=&quot;4.&quot;&gt;
+		Marqueurs et groupes de marqueurs
+		&lt;/li&gt;
+		&lt;p&gt;
+		Un marqueur est un indicateur spécifique d'amplitude à un instant donnée pour un signal et un essai donné. L'ensemble des indicateurs de même spécificité pour un signal donné 
+		est un groupe de marqueur. Nous trouverons par exemple le groupe de marqueurs de maxima.
+		&lt;/p&gt;
+		&lt;p&gt;
+		Enfin il est possible de supprimer le champ, le groupe de marqueurs &lt;img href=&quot;DELETE2_ICON&quot;/&gt; ou le marqueur &lt;img href=&quot;DELETE3_ICON&quot;/&gt; sélectionné 
+		et de parcourir les essais &lt;img href=&quot;PREVIOUS_ICON&quot;/&gt; &lt;img href=&quot;NEXT_ICON&quot;/&gt;.  
+		&lt;/p&gt;
+		&lt;li&gt;La vue des catégories :&lt;/li&gt;&lt;br/&gt;
+		&lt;p&gt;
+		Cette vue donne la liste des catégories relatives au sujet sélectionné. Une catégorie est tout simplement un ensemble d'essais, tous signaux confondus. Cet ensemble d'essais
+		est déterminé selon des critères bien définis. Lorsqu'une catégorie est sélectionnée dans la liste, les critères et la liste des essais sont affichés.
+		L'icône &lt;img href=&quot;ADD_CATEGORY_ICON&quot;/&gt; permet d'ajouter une nouvelle catégorie.
+		&lt;/p&gt;
+		&lt;li&gt;La vue d'apperçu des signaux :&lt;/li&gt;&lt;br/&gt;
+		&lt;p&gt;
+		Cette vue permet de visualiser les essais des signaux du sujet sélectionné dans la vue des expériences. 
+		&lt;/p&gt;
+		&lt;/form&gt;" />
+
+	<step title="Création du graphe"
+		description="&lt;form&gt;
+		&lt;p&gt;
+		Créons dans un premier temps un répertoire qui contiendra le graphe et le traitement que nous contruirons par la suite. Pour ce faire, sélectionnez, dans la vue des Expèriences, 
+		l'expèrience que vous venez de créer et cliquez sur le bouton droit de la souris. Dans le menu contextuel qui apparaît cliquez sur &lt;b&gt;Nouveau &gt; Nouveau dossier&lt;/b&gt;. Entrez 
+		pour nom de dossier &quot;fichiers&quot; et cliquez sur &lt;b&gt;OK&lt;/b&gt;.
+		&lt;/p&gt;
+		&lt;p&gt;
+		Si ce n'est pas déjà fait, sélectionner ce dossier et créez un nouveau graphe de type temporel (&lt;b&gt;Time chart&lt;/b&gt;) dans le menu contextuel &lt;b&gt;Nouveau &gt; Nouveau graphe&lt;/b&gt; en le nommant
+		 &quot;graphe_1&quot; et cliquez sur &lt;b&gt;OK&lt;/b&gt;. Le graphe s'ouvre alors dans la zone central de l'interface, zone des éditeurs.
+		&lt;/p&gt;
+		&lt;p&gt;
+		Sélectionnez maintenant le sujet chargé pour voir apparaître ses signaux dans la palette des canaux à l'extrème gauche de l'éditeur de graphe. Sélectionnez le signal &lt;b&gt;HamaDRX&lt;/b&gt; puis l'essai n°1 pour
+		voir apparaître les données. Vous pouvez bien sûr sélectionner plusieurs signaux et plusieurs essais en même temps.
+		&lt;/p&gt;
+		&lt;p&gt;
+		Fermer cette éditeur puis ouvrez le de nouveau : le graphe n'a pas été sauvegardé. Si vous souhaitez
+		rendre votre graphe persistant, il vous faut cocher les essais souhaités : sélectionnez les signaux &lt;b&gt;HamaDRX&lt;/b&gt; et &lt;b&gt;BHamaDRX&lt;/b&gt; et cochez l'essai n°1; fermez le graphe et réouvrez le.
+		Cette fois le graphe est persistant.
+		&lt;/p&gt;
+		&lt;/form&gt;" />
+	<step title="Création du traitement"
+		description="&lt;form&gt;
+		&lt;p&gt;
+		Sélectionnez le dossier nommé &quot;fichiers&quot; de votre expérience et cliquez sur le bouton droit de la souris. Dans le menu contextuel qui apparaît cliquez sur &lt;b&gt;Nouveau &gt; Nouveau processus&lt;/b&gt;. Entrez 
+		pour nom &quot;process_1&quot; et cliquez sur &lt;b&gt;OK&lt;/b&gt;.
+		&lt;/p&gt;
+		&lt;p&gt;
+		A l'extrême gauche de l'éditeur, cliquer sur l'icône &lt;img href=&quot;ADD_FUNCTION_ICON&quot;/&gt; pour ajouter une fonction. Sélectionnez ensuite la fonction &lt;b&gt;Butterworth_lowpass&lt;/b&gt; dans  
+		&lt;b&gt;root &gt; SignalOutput &gt; Filters&lt;/b&gt;. La fonction apparaît maintenant dans la liste de fonctions utilisées. 
+		&lt;/p&gt;
+		&lt;p&gt;
+		Pour configurer cette fonction, sélectionnez la. Son éditeur apparaît dans la partie droite. Cliquez sur le bouton &lt;b&gt;&quot;Ajouter...&quot;&lt;/b&gt; pour sélectionner les signaux que
+		vous souhaitez filtrer (&lt;b&gt;HamaDRX&lt;/b&gt; par exemple). Entrez ensuite &lt;b&gt;&quot;1:141&quot;&lt;/b&gt; (sans les quillemets !) pour traiter tous les essais des signaux que vous venez de choisir. 
+		Cliquez sur l'onglet &lt;b&gt;&quot;Sorties&quot;&lt;/b&gt;	pour donner un suffixe (&lt;b&gt;BLP&lt;/b&gt; par exemple) de construction des noms des nouveaux signaux (dans l'exemple on aura &lt;b&gt;BHamaDRXBLP&lt;/b&gt;).
+		Cliquez sur l'onglet &lt;b&gt;&quot;Paramètres&quot;&lt;/b&gt; pour renseigner la fréquence de coupure et l'ordre du filtre (10Hz et ordre 10 par exemple).
+		&lt;/p&gt;
+		&lt;p&gt;
+		Vous pouvez cliquer sur l'icône &lt;img href=&quot;CHECK_PROCESS_ICON&quot;/&gt; de la barre d'outil du processus pour voir s'il est correctement configuré. Si c'est le cas, vous pouvez alors le lancer en 
+		cliquant sur l'icône &lt;img href=&quot;RUN_PROCESS_ICON&quot;/&gt;. Vous aurez alors accès aux nouveaux signaux dans la vues des signaux et dans les éditeurs de graphes et de processus.
+		&lt;/p&gt;
+		&lt;/form&gt;" />
+	<step title="Exportation des données"
+		description="&lt;form&gt;
+		&lt;p&gt;
+		Dans le menu &lt;b&gt;Expériences&lt;/b&gt; cliquez sur &lt;b&gt;Exporter...&lt;/b&gt;. Sélectionnez le repertoire d'exportation, le type de séparateur puis cliquez sur suivant. Sélectionnez alors les signaux
+		que vous souhaitez exporter en fichier texte et cliquer sur terminer. A la fin du traitement, un fichier nommé &lt;b&gt;&quot;Experiment.Subject1.signals.txt&quot;&lt;/b&gt; devrait être présent dans le repertoire 
+		d'exportation.
+		&lt;/p&gt;
+		&lt;/form&gt;" />
+</cheatsheet>

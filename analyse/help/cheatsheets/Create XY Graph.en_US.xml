@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cheatsheet title="Créer un Graphe XY"
+	description="&lt;form&gt;
+		&lt;p&gt;Ce tutoriel va vous montrer comment créer un graphe XY. Pour suivre ces différentes étapes, assurez d'avoir
+		suivi les trois premières étapes du tutoriel de démarrage rapide.&lt;/p&gt;
+		&lt;/form&gt;">
+	<step title="Création du graphe"
+		description="&lt;form&gt;&lt;p&gt;
+		Sélectionnez l'expérience &quot;&lt;b&gt;Experiment&lt;/b&gt;&quot; puis cliquez sur le bouton droit et sélectionnez de l'élément de menu 
+		&quot;&lt;b&gt;Nouveau &gt; Nouveau Graphe&lt;/b&gt;&quot;. Entrez &quot;&lt;b&gt;XYChart&lt;/b&gt;&quot; comme nom de graphe et sélectionnez 
+		&quot;&lt;b&gt;XY chart&lt;/b&gt;&quot; comme type de graphe puis cliquez sur le bouton &quot;&lt;b&gt;OK&lt;/b&gt;&quot;. Le graphe doit alors 
+		apparaitre dans la zone centrale des éditeurs. Sélectionnez maintenant le sujet &quot;&lt;b&gt;Subject1&lt;/b&gt;&quot; de l'expérience
+		&quot;&lt;b&gt;Experiment&lt;/b&gt;&quot; : le label &quot;&lt;b&gt;Selected Subject&lt;/b&gt;&quot; doit être mis à jour sur le sujet sélectionné.
+		&lt;/p&gt;&lt;/form&gt;" />
+	<step title="Configuration des courbes"
+		description="&lt;form&gt;&lt;p&gt;
+		Sélectionnez maintenant le signal &quot;&lt;b&gt;BHamaDRY&lt;/b&gt;&quot; comme valeur pour l'ordonnée &quot;&lt;b&gt;Y&lt;/b&gt;&quot; 
+		et le signal &quot;&lt;b&gt;BHamaDRX&lt;/b&gt;&quot; comme valeur pour l'abscisse &quot;&lt;b&gt;X&lt;/b&gt;&quot; dans les boites
+		déroulantes respectives de l'éditeur. Cliquez sur le bouton &lt;img href=&quot;ADD_ICON&quot;/&gt; pour ajouter cette combinaison Ordonnée/Abscisse : 
+		celle-ci doit apparaitre sous la forme &quot;&lt;b&gt;Experiment.Subject1 [BHamaDRY:BHamaDRX]&lt;/b&gt;&quot; dans la lite de gauche.  
+		Sélectionnez alors cette combinaison pour faire apparaitre ses essais dans la liste de droite. Enfin sélectionnez le(s) essai(s) pour le(s)
+		visualiser.&lt;br/&gt;&lt;br/&gt;
+		&lt;b&gt;NOTA : les deux signaux abscisse et ordonnée doivent avoir le même nombre d'échantillons&lt;/b&gt;
+		&lt;/p&gt;&lt;/form&gt;" />
+</cheatsheet>

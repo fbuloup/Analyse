@@ -1,0 +1,12 @@
+{
+    IBClasses = (
+        {
+            ACTIONS = {editURL = id; exit = id; }; 
+            CLASS = AnalyseStarter; 
+            LANGUAGE = ObjC; 
+            SUPERCLASS = NSObject; 
+        }, 
+        {CLASS = FirstResponder; LANGUAGE = ObjC; SUPERCLASS = NSObject; }
+    ); 
+    IBVersion = 1; 
+}

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cheatsheet title="Créer une fonction"
+	description="&lt;form&gt;
+		&lt;p&gt;Ce tutoriel va vous montrer comment créer votre première fonction. Elle va consiter tout simplement à faire la moyenne de deux signaux.&lt;/p&gt;
+		&lt;/form&gt;">
+	<step title="Création et configuration de la fonction"
+		description="&lt;form&gt;&lt;p&gt;
+		Dans le menu &lt;b&gt;Outils&lt;/b&gt;, ouvrez l'éditeur de fonction &lt;img href=&quot;FUNCTION_ICON&quot;/&gt;. Maximisez la fenêtre de l'éditeur 
+		de fonction dans le menu principal de l'éditeur, choisissez &lt;b&gt;Basculer vers la librairie étendue&lt;/b&gt;. Dans l'arborescence des fonctions, sélectionnez le noeud &lt;b&gt;root&lt;/b&gt;. Cliquer alors sur le bouton droit de la souris 
+		pour faire apparaître le menu contextuel. Cliquez alors sur &lt;img href=&quot;ADD_FUNCTION_ICON&quot;/&gt; &lt;b&gt;Nouvelle fonction...&lt;/b&gt; Entrez
+		&quot;&lt;b&gt;SignalsMean&lt;/b&gt;&quot; comme nom de fonction, validez et double cliquez sur cette fonction dans l'arborescence afin de l'éditer. 
+		&lt;/p&gt;
+		&lt;p&gt;
+		Donnez un commentaire Matlab pour cette fonction, un nom, une brève description ainsi qu'une description plus détaillée pour l'interface graphique 
+		(généralement la même chose que le commentaire Matlab); puis configurez les entrées sorties de la façon suivante :
+		&lt;/p&gt;
+		&lt;p&gt;&lt;img href=&quot;FUNCTION_CONFIG&quot;/&gt;
+		&lt;/p&gt;&lt;/form&gt;" />
+	<step title="Ecriture du code Matlab"
+		description="&lt;form&gt;
+		&lt;p&gt;
+		Le code de la fonction se résume au suivant (aucune boucle n'est nécessaire) :
+		&lt;img href=&quot;FUNCTION_CODE&quot;/&gt;
+		&lt;/p&gt;
+		&lt;p&gt;Vous pouvez maintenant utiliser cette fonction dans tous vos traitements.
+		&lt;/p&gt;
+		&lt;/form&gt;" />
+</cheatsheet>

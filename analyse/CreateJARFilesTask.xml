@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project default="Create_jar_CreateXMLFilesListToUpdateTask" name="Create Jar for ant tasks">
+
+	<target name="Create_jar_CreateXMLFilesListToUpdateTask" description="Create jar lib for task">
+		<jar destfile="./libs/CreateXMLFilesListToUpdateTask.jar" basedir="bin/" includes="anttasks/CreateXMLFilesListToUpdateTask*.*" />
+	</target>
+
+	<target name="Create_jar_CreateChecksumFileTask" description="Create jar lib for task">
+		<jar destfile="./libs/CreateChecksumFileTask.jar" basedir="bin/" includes="anttasks/CreateChecksumFileTask*.*" />
+	</target>
+
+	<target name="Create_jar_CreateFileVersion" description="Create jar lib for task">
+		<jar destfile="./libs/CreateFileVersionTask.jar" basedir="bin/" includes="anttasks/CreateFileVersionTask*.*" />
+	</target>
+
+	<target name="Create_jar_CheckFilesVersionsTask" description="Create jar lib for task">
+		<jar destfile="./libs/CheckFilesVersionsTask.jar" basedir="bin/" includes="anttasks/CheckFilesVersionsTask*.*" />
+	</target>
+
+</project>

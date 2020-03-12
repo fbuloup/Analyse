@@ -1,0 +1,55 @@
+program startAnalyse;
+uses
+  Forms,
+  UStartAnalyse in 'UStartAnalyse.pas' {StartAnalyseForm},
+  ShellApi,
+  windows,
+  SysUtils,
+  Classes,
+  StrUtils,
+  Dialogs,
+  UnitRedirect in 'UnitRedirect.pas';
+
+{$R *.res}
+function TestJavaFile:boolean;
+var cmd, input, output, error : String;
+begin
+  cmd := 'Cmd.exe';
+  input := 'java -version'+#13#10+'exit'+#13#10;
+  Sto_RedirectedExecute(cmd, output, error, input);
+  Result := AnsiContainsStr(error, 'java version') ;
+end;
+
+var parameters : String;
+    SEInfo: TShellExecuteInfo;
+    value : LongBool;
+begin
+  UStartAnalyse.errorNum := 0;
+  if(TestJavaFile = true) then
+  begin
+    parameters := '/C "' + GetCurrentDir + '\WINDOWSAnalyseLauncher.bat"';
+    FillChar(SEInfo, SizeOf(SEInfo), 0) ;
+    SEInfo.cbSize := SizeOf(TShellExecuteInfo) ;
+    with SEInfo do
+    begin
+      fMask := SEE_MASK_NOCLOSEPROCESS;
+      Wnd := Application.Handle;
+      lpFile := PChar('cmd.exe') ;
+      lpParameters := PChar(parameters) ;
+      lpDirectory := PChar(GetCurrentDir) ;
+      nShow := SW_HIDE;
+    end;
+    value := ShellExecuteEx(@SEInfo);
+    UStartAnalyse.errorNum := GetLastError();
+    if(value = true) then Application.Terminate;
+  end else
+  begin
+    Application.Initialize;
+    Application.Title := 'Windows Analyse Launcher';
+    Application.CreateForm(TStartAnalyseForm, StartAnalyseForm);
+    Application.Run;
+  end;
+end.
+
+
+

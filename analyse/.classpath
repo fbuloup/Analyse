@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="var" path="ECLIPSE_HOME/plugins/org.eclipse.swt.cocoa.macosx.x86_64_3.113.0.v20191204-0601.jar" sourcepath="/ECLIPSE_HOME/plugins/org.eclipse.swt.cocoa.macosx.x86_64.source_3.7.2.v3740f.jar"/>
+	<classpathentry kind="var" path="ECLIPSE_HOME/plugins/org.eclipse.jface_3.18.0.v20191122-2109.jar" sourcepath="/ECLIPSE_HOME/plugins/org.eclipse.jface.source_3.7.0.v20110928-1505.jar"/>
+	<classpathentry kind="var" path="ECLIPSE_HOME/plugins/org.eclipse.core.commands_3.9.600.v20191122-2109.jar"/>
+	<classpathentry kind="var" path="ECLIPSE_HOME/plugins/org.eclipse.osgi_3.15.100.v20191114-1701.jar"/>
+	<classpathentry kind="var" path="ECLIPSE_HOME/plugins/org.eclipse.equinox.common_3.10.600.v20191004-1420.jar"/>
+	<classpathentry kind="var" path="ECLIPSE_HOME/plugins/org.eclipse.ui.forms_3.8.200.v20191114-0830.jar" sourcepath="/ECLIPSE_HOME/plugins/org.eclipse.ui.forms.source_3.5.101.v20111011-1919.jar"/>
+	<classpathentry kind="var" path="ECLIPSE_HOME/plugins/com.ibm.icu_64.2.0.v20190507-1337.jar"/>
+	<classpathentry kind="var" path="ECLIPSE_HOME/plugins/org.eclipse.text_3.10.0.v20191122-2108.jar"/>
+	<classpathentry kind="var" path="ECLIPSE_HOME/plugins/org.eclipse.jface.text_3.16.100.v20191203-1634.jar"/>
+	<classpathentry kind="var" path="ECLIPSE_HOME/plugins/org.eclipse.core.runtime_3.17.0.v20191122-2104.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/swtchart"/>
+	<classpathentry kind="lib" path="libs/ant.jar"/>
+	<classpathentry kind="lib" path="libs/ftpserver/commons-net-2.2.jar"/>
+	<classpathentry kind="lib" path="libs/ftpserver/ftplet-api-1.0.5.jar"/>
+	<classpathentry kind="lib" path="libs/ftpserver/ftpserver-core-1.0.5.jar"/>
+	<classpathentry kind="lib" path="libs/ftpserver/log4j-1.2.14.jar"/>
+	<classpathentry kind="lib" path="libs/ftpserver/mina-core-2.0.0-RC1.jar"/>
+	<classpathentry kind="lib" path="libs/ftpserver/slf4j-api-1.5.2.jar"/>
+	<classpathentry kind="lib" path="libs/ftpserver/slf4j-log4j12-1.5.2.jar"/>
+	<classpathentry kind="lib" path="libs/jetty/jetty-continuation-7.3.0.v20110203.jar"/>
+	<classpathentry kind="lib" path="libs/jetty/jetty-http-7.3.0.v20110203.jar"/>
+	<classpathentry kind="lib" path="libs/jetty/jetty-io-7.3.0.v20110203.jar"/>
+	<classpathentry kind="lib" path="libs/jetty/jetty-security-7.3.0.v20110203.jar"/>
+	<classpathentry kind="lib" path="libs/jetty/jetty-server-7.3.0.v20110203.jar"/>
+	<classpathentry kind="lib" path="libs/jetty/jetty-servlet-7.3.0.v20110203.jar"/>
+	<classpathentry kind="lib" path="libs/jetty/jetty-util-7.3.0.v20110203.jar"/>
+	<classpathentry kind="lib" path="libs/jetty/jetty-webapp-7.3.0.v20110203.jar"/>
+	<classpathentry kind="lib" path="libs/jetty/jetty-xml-7.3.0.v20110203.jar"/>
+	<classpathentry kind="lib" path="libs/jetty/servlet-api-2.5.jar"/>
+	<classpathentry kind="lib" path="libs/jacob.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

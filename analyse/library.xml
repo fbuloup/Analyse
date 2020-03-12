@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><library rootDirectory="./matlabscripts/library/">
+	<root editable="false">
+		<FieldOutput editable="false">
+			<ConvexEnvelopePerimeter editable="false" functionName="ConvexEnvelopePerimeter" shortDescription="&lt;p&gt;Convex envelope perimeter between two markers&lt;/p&gt;"/>
+			<Variance editable="false" functionName="Variance" shortDescription="&lt;p&gt;Variance between two markers&lt;/p&gt;"/>
+			<RMS editable="false" functionName="RMS" shortDescription="&lt;p&gt;Compute RMS value of signal input between two markers&lt;/p&gt;"/>
+			<TotalTimeAtValue editable="false" functionName="TotalTimeAtValue" shortDescription="&lt;p&gt;This function computes total time spent at a particular value between two markers&lt;/p&gt;"/>
+			<Area editable="false" functionName="Area" shortDescription="&lt;p&gt;Compute area under curve between two markers using trapz&lt;/p&gt;"/>
+			<CurveLength editable="false" functionName="CurveLength" shortDescription="&lt;p&gt;Curvilinear abscissa between two markers&lt;/p&gt;"/>
+			<StandardDeviation editable="false" functionName="StandardDeviation" shortDescription="&lt;p&gt;Standard deviation between two markers&lt;/p&gt;"/>
+			<Mean editable="false" functionName="Mean" shortDescription="&lt;p&gt;Samples mean between two markers&lt;/p&gt;"/>
+		</FieldOutput>
+		<SignalOutput editable="false">
+			<Subsampling editable="false" functionName="Subsampling" shortDescription="&lt;p&gt;Subsampling&lt;/p&gt;"/>
+			<Derivative editable="false" functionName="Derivative" shortDescription="&lt;p&gt;Derivative&lt;/p&gt;"/>
+			<Truncation editable="false" functionName="Truncation" shortDescription="&lt;p&gt;Signal truncation&lt;/p&gt;"/>
+			<FFT editable="false" functionName="FFT" shortDescription="&lt;p&gt;FFT&lt;/p&gt;"/>
+			<Integration editable="false" functionName="Integration" shortDescription="&lt;p&gt;Integration&lt;/p&gt;"/>
+			<Filters editable="false">
+				<LowpassFilters editable="false">
+					<Butterworth_lowpass editable="false" functionName="Butterworth_lowpass" shortDescription="&lt;p&gt;Butterworth lowpass filter&lt;/p&gt;"/>
+					<Chebyshev1_lowpass editable="false" functionName="Chebyshev1_lowpass" shortDescription="&lt;p&gt;Chebyshev lowpass filter (type 1)&lt;/p&gt;"/>
+					<Chebyshev2_lowpass editable="false" functionName="Chebyshev2_lowpass" shortDescription="&lt;p&gt;Chebyshev lowpass filter (type 2)&lt;/p&gt;"/>
+					<Elliptic_lowpass editable="false" functionName="Elliptic_lowpass" shortDescription="&lt;p&gt;Elliptic lowpass filter&lt;/p&gt;"/>
+				</LowpassFilters>
+				<HighpassFilters editable="false">
+					<Butterworth_highpass editable="false" functionName="Butterworth_highpass" shortDescription="&lt;p&gt;Butterworth highpass filter&lt;/p&gt;"/>
+					<Chebyshev1_highpass editable="false" functionName="Chebyshev1_highpass" shortDescription="&lt;p&gt;Chebyshev passband filter (type 1)&lt;/p&gt;"/>
+					<Chebyshev2_highpass editable="false" functionName="Chebyshev2_highpass" shortDescription="&lt;p&gt;Chebyshev highpass filter (type 2)&lt;/p&gt;"/>
+					<Elliptic_highpass editable="false" functionName="Elliptic_highpass" shortDescription="&lt;p&gt;Elliptic highpass filter&lt;/p&gt;"/>
+				</HighpassFilters>
+				<BandpassFilters editable="false">
+					<Butterworth_bandpass editable="false" functionName="Butterworth_bandpass" shortDescription="&lt;p&gt;Butterworth bandpass filter&lt;/p&gt;"/>
+					<Chebyshev1_bandpass editable="false" functionName="Chebyshev1_bandpass" shortDescription="&lt;p&gt;Chebyshev bandpass filter (type 1)&lt;/p&gt;"/>
+					<Chebyshev2_bandpass editable="false" functionName="Chebyshev2_bandpass" shortDescription="&lt;p&gt;Chebyshev bandpass filter (type 2)&lt;/p&gt;"/>
+					<Elliptic_bandpass editable="false" functionName="Elliptic_bandpass" shortDescription="&lt;p&gt;Elliptic bandpass filter&lt;/p&gt;"/>
+				</BandpassFilters>
+				<BandstopFilters editable="false">
+					<Butterworth_bandstop editable="false" functionName="Butterworth_bandstop" shortDescription="&lt;p&gt;Butterworth bandstop filter&lt;/p&gt;"/>
+					<Chebyshev1_bandstop editable="false" functionName="Chebyshev1_bandstop" shortDescription="&lt;p&gt;Chebyshev bandstop filter (type 1)&lt;/p&gt;"/>
+					<Chebyshev2_bandstop editable="false" functionName="Chebyshev2_bandstop" shortDescription="&lt;p&gt;Chebyshev bandstop filter (type 2)&lt;/p&gt;"/>
+					<Elliptic_bandstop editable="false" functionName="Elliptic_bandstop" shortDescription="&lt;p&gt;Elliptic bandstop filter&lt;/p&gt;"/>
+				</BandstopFilters>
+				<NonLinearFilters editable="false">
+					<ClearPulses editable="false" functionName="ClearPulses" shortDescription="&lt;p&gt;This function supress pulses that have a too short duration.&lt;/p&gt;"/>
+				</NonLinearFilters>
+			</Filters>
+			<BasicOperations editable="false">
+				<Addition editable="false" functionName="Addition" shortDescription="&lt;p&gt;Addition&lt;/p&gt;"/>
+				<Division editable="false" functionName="Division" shortDescription="&lt;p&gt;Division&lt;/p&gt;"/>
+				<Gain editable="false" functionName="Gain" shortDescription="&lt;p&gt;Gain multiplication&lt;/p&gt;"/>
+				<Multiplication editable="false" functionName="Multiplication" shortDescription="&lt;p&gt;Multiplication&lt;/p&gt;"/>
+				<Subtraction editable="false" functionName="Subtraction" shortDescription="&lt;p&gt;Subtraction&lt;/p&gt;"/>
+				<SignalsMean editable="false" functionName="SignalsMean" shortDescription="&lt;p&gt;Average of two signals&lt;/p&gt;"/>
+				<AbsoluteValue editable="false" functionName="AbsoluteValue" shortDescription="&lt;p&gt;Absolute value&lt;/p&gt;"/>
+			</BasicOperations>
+			<CopySignalPart editable="false" functionName="CopySignalPart" shortDescription="&lt;p&gt;Create a new signal from a part of another one specified by two markers&lt;/p&gt;"/>
+			<MinusField editable="false" functionName="MinusField" shortDescription="&lt;p&gt;Subtsract field values from an input signal for each trial&lt;/p&gt;"/>
+			<MotionRange editable="false" functionName="MotionRange" shortDescription="&lt;p&gt;This function computes motion range&lt;/p&gt;"/>
+			<MotionDistance editable="false" functionName="MotionDistance" shortDescription="&lt;p&gt;This function computes motion distance&lt;/p&gt;"/>
+			<MotionDistance3D editable="false" functionName="MotionDistance3D" shortDescription="&lt;p&gt;This function computes motion distancein 3D&lt;/p&gt;"/>
+			<MotionDirection editable="false" functionName="MotionDirection" shortDescription="&lt;p&gt;This function computes motion direction&lt;/p&gt;"/>
+			<MotionDistancePointLine editable="false" functionName="MotionDistancePointLine" shortDescription="&lt;p&gt;This function computes distance from every motion's points to the line that joins the start and end of this motion&lt;/p&gt;"/>
+			<ProgressiveCurveLength editable="false" functionName="ProgressiveCurveLength" shortDescription="&lt;p&gt;This function computes the length of the path at each of its points. This path is formed by the two input signals.&lt;/p&gt;"/>
+			<XStandardization editable="false" functionName="XStandardization" shortDescription="&lt;p&gt;X axis standardization&lt;/p&gt;"/>
+			<YStandardization editable="false" functionName="YStandardization" shortDescription="&lt;p&gt;Y axis standardization&lt;/p&gt;"/>
+			<FirstSamplesReplacement editable="false" functionName="FirstSamplesReplacement" shortDescription="&lt;p&gt;This functions replaces the N first samples by the N+1 one.&lt;/p&gt;"/>
+			<AddMarkerToSignal editable="false" functionName="AddMarkerToSignal" shortDescription="&lt;p&gt;This function simply adds a marker to a signal&lt;/p&gt;"/>
+			<SubstractMarkerToSignal editable="false" functionName="SubstractMarkerToSignal" shortDescription="&lt;p&gt;This function simply substracts a marker to a signal&lt;/p&gt;"/>
+			<SubstractSignalToMarker editable="false" functionName="SubstractSignalToMarker" shortDescription="&lt;p&gt;This function simply substracts a signal to a maker&lt;/p&gt;"/>
+		</SignalOutput>
+		<ModifySignal editable="false">
+			<FrontCut editable="false" functionName="FrontCut" shortDescription="&lt;p&gt;This function modify front cut value of selected signals&lt;/p&gt;"/>
+			<EndCut editable="false" functionName="EndCut" shortDescription="&lt;p&gt;This function modify end cut value of selected signals&lt;/p&gt;"/>
+			<FrontCutFromMarker editable="false" functionName="FrontCutFromMarker" shortDescription="&lt;p&gt;This function modify end cut value of selected signals from an input marker&lt;/p&gt;"/>
+			<EndCutFromMarker editable="false" functionName="EndCutFromMarker" shortDescription="&lt;p&gt;This function modify end cut value of selected signals from an input marker&lt;/p&gt;"/>
+		</ModifySignal>
+		<MarkerOutput editable="false">
+			<Maximum editable="false" functionName="Maximum" shortDescription="&lt;p&gt;Maximum between two markers&lt;/p&gt;"/>
+			<Minimum editable="false" functionName="Minimum" shortDescription="&lt;p&gt;Minimum between two markers&lt;/p&gt;"/>
+			<Extrema editable="false" functionName="Extrema" shortDescription="&lt;p&gt;Extrema between two markers&lt;/p&gt;"/>
+			<TransfertMarker editable="false" functionName="TransfertMarker" shortDescription="&lt;p&gt;Transfert marker from a signal to another one&lt;/p&gt;"/>
+			<Threshold editable="false" functionName="Threshold" shortDescription="&lt;p&gt;This function marks every moments where signal goes over a specified threshold&lt;/p&gt;"/>
+			<HalfRecoveryTime editable="false" functionName="HalfRecoveryTime" shortDescription="&lt;p&gt;Create a marker of the &quot;half recovery time&quot; th indicating the time required  for the signal to decrease to half the burst amplitude value after a sudden signal burst&lt;/p&gt;"/>
+			<NextMaximum editable="false" functionName="NextMaximum" shortDescription="&lt;p&gt;Next Maximum between two markers&lt;/p&gt;"/>
+			<CyclicNextMaximum editable="false" functionName="CyclicNextMaximum" shortDescription="&lt;p&gt;Next Maximum between two markers&lt;/p&gt;"/>
+			<NextMinimum editable="false" functionName="NextMinimum" shortDescription="&lt;p&gt;Next Minimum between two markers&lt;/p&gt;"/>
+			<NextOvershoot editable="false" functionName="NextOvershoot" shortDescription="&lt;p&gt;Find next overshoot from marker&lt;/p&gt;"/>
+			<TimeMarker editable="false" functionName="TimeMarker" shortDescription="&lt;p&gt;Creates a marker at a chosen time. If trial duration is shorter than specified time, you can choose to mark the last trial sample.&lt;/p&gt;"/>
+			<MarkersDifference editable="false" functionName="MarkersDifference" shortDescription="&lt;p&gt;Compute Time difference between two group markers&lt;/p&gt;"/>
+			<DuplicateMarkers editable="false" functionName="DuplicateMarkers" shortDescription="&lt;p&gt;Duplicate markers&lt;/p&gt;"/>
+			<FindAmplitudeBackward editable="false" functionName="FindAmplitudeBackward" shortDescription="&lt;p&gt;This function finds an amplitude, specified as parameter, starting from the second input marker and going backward to the first one.&lt;/p&gt;"/>
+			<FindAmplitudeForward editable="false" functionName="FindAmplitudeForward" shortDescription="&lt;p&gt;This function finds an amplitude, specified as parameter, starting from the first input marker and going forward to the other marker.&lt;/p&gt;"/>
+			<VariabilityMakerForward editable="false" functionName="VariabilityMakerForward" shortDescription="&lt;p&gt;This function marks the point where signal goes out or in a specified variability.&lt;/p&gt;"/>
+			<VariabilityMarkerBackward editable="false" functionName="VariabilityMarkerBackward" shortDescription="&lt;p&gt;his function marks the point where signal goes out or in a specified variability.&lt;/p&gt;"/>
+		</MarkerOutput>
+		
+	</root>
+</library>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cheatsheet 
+	title="Apperçu de l'interface graphique"
+	description=
+		"&lt;form&gt;
+		&lt;p&gt;
+		&lt;/p&gt;
+		&lt;/form&gt;">
+	<step title="Généralités"
+		description=
+		"&lt;form&gt;
+		&lt;p&gt;
+		&lt;img href=&quot;ANALYSE_IMAGE&quot;/&gt;
+		&lt;/p&gt;		
+		&lt;/form&gt;"/>
+	<step title="La vue des expériences"
+		description=
+		"&lt;form&gt;
+		&lt;p&gt;
+		&lt;img href=&quot;EXPERIMENTS_VIEW_IMAGE&quot;/&gt;
+		&lt;/p&gt;		
+		&lt;/form&gt;"/>
+	<step title="La vue des signaux"
+		description=
+		"&lt;form&gt;
+		&lt;p&gt;
+		&lt;img href=&quot;SIGNALS_VIEW_IMAGE&quot;/&gt;
+		&lt;/p&gt;		
+		&lt;/form&gt;"/>
+	<step title="La vue des catégories"
+		description=
+		"&lt;form&gt;
+		&lt;p&gt;
+		&lt;img href=&quot;CATEGORIES_VIEW_IMAGE&quot;/&gt;
+		&lt;/p&gt;		
+		&lt;/form&gt;"/>
+	<step title="La vue d'apperçu des signaux"
+		description=
+		"&lt;form&gt;
+		&lt;p&gt;
+		&lt;img href=&quot;PREVIEW_SIGNALS_VIEW_IMAGE&quot;/&gt;
+		&lt;/p&gt;		
+		&lt;/form&gt;"/>
+	<step title="La vue des messages"
+		description=
+		"&lt;form&gt;
+		&lt;p&gt;
+		&lt;img href=&quot;MESSAGES_VIEW_IMAGE&quot;/&gt;
+		&lt;/p&gt;		
+		&lt;/form&gt;"/>
+	<step title="La vue de la console"
+		description=
+		"&lt;form&gt;
+		&lt;p&gt;
+		&lt;img href=&quot;CONSOLE_VIEW_IMAGE&quot;/&gt;
+		&lt;/p&gt;		
+		&lt;/form&gt;"/>
+	<step title="La vue des éditeurs de graphes"
+		description=
+		"&lt;form&gt;
+		&lt;p&gt;
+		&lt;img href=&quot;CHART_EDITOR_VIEW_IMAGE&quot;/&gt;
+		&lt;/p&gt;		
+		&lt;/form&gt;"/>
+	<step title="La vue des éditeurs de processus"
+		description=
+		"&lt;form&gt;
+		&lt;p&gt;
+		&lt;img href=&quot;PROCESS_EDITOR_VIEW_IMAGE&quot;/&gt;
+		&lt;/p&gt;		
+		&lt;/form&gt;"/>
+</cheatsheet>

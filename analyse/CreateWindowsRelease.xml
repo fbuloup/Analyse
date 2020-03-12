@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project default="check_files_versions" name="Check versions - Commit - Create Releases">
+	<!--this file was created by Eclipse Runnable JAR Export Wizard-->
+	<!--ANT 1.7 is required                                        -->
+
+	<property name="RELEASE_NAME" value="WINDOWS_ANALYSE_RELEASE" />
+	<property name="RELEASE_DIRECTORY" value="${workspace.loc}/WINDOWS_ANALYSE_RELEASE/" />
+	<property name="NATIVE_LAUNCHER_DIRECTORY" value="${workspace.loc}/natives-analyse-launchers/startAnalyse/bin/windows/" />
+	<property name="UPDATE_FILES_LIST_NAME" value="updateFilesList.xml" />
+	<property name="RELEASE_FILES_LIST_NAME" value="releaseFilesList.xml" />
+	<property name="FTP_RELEASE_FOLDER" value="windows_release" />
+	<property name="APPLY_CHANGES_DIRECTORY" value="${workspace.loc}/apply-analyse-changes/" />
+
+	<taskdef name="CreateXMLFilesListToUpdate" classname="anttasks.CreateXMLFilesListToUpdateTask" classpath="./libs/CreateXMLFilesListToUpdateTask.jar" />
+	<taskdef name="CreateChecksumFile" classname="anttasks.CreateChecksumFileTask" classpath="./libs/CreateChecksumFileTask.jar" />
+	<taskdef name="CreateFileVersion" classname="anttasks.CreateFileVersionTask" classpath="./libs/CreateFileVersionTask.jar" />
+	<taskdef name="CheckFilesVersions" classname="anttasks.CheckFilesVersionsTask" classpath="./libs/CheckFilesVersionsTask.jar" />
+
+
+	<echo message="eclipse.home is : ${eclipse.home}" />
+	<echo message="RELEASE_DIRECTORY is : ${RELEASE_DIRECTORY}" />
+	<echo message="workspace.loc is : ${workspace.loc}" />
+
+	<target name="create_windows_release">
+
+		<!-- Delete release directory content and create default directories -->
+		<delete>
+			<fileset dir="${RELEASE_DIRECTORY}" excludes=".project" />
+		</delete>
+		<mkdir dir="${RELEASE_DIRECTORY}matlabscripts" />
+		<mkdir dir="${RELEASE_DIRECTORY}matlabscripts/library" />
+
+		<!-- Create analyse.jar -->
+		<jar destfile="${RELEASE_DIRECTORY}analyse.jar">
+			<manifest>
+				<attribute name="Main-Class" value="org.eclipse.jdt.internal.jarinjarloader.JarRsrcLoader" />
+				<attribute name="Rsrc-Main-Class" value="analyse.AnalyseApplication" />
+				<attribute name="Class-Path" value="." />
+				<attribute name="Rsrc-Class-Path" value="./ 
+				org.eclipse.swt.win32.win32.x86_3.7.2.v3740f.jar 
+				org.eclipse.jface_3.7.0.v20110928-1505.jar 
+				org.eclipse.core.commands_3.6.0.I20110111-0800.jar 
+				org.eclipse.osgi_3.7.2.v20120110-1415.jar 
+				org.eclipse.equinox.common_3.6.0.v20110523.jar 
+				org.eclipse.ui.forms_3.5.101.v20111011-1919.jar 
+				com.ibm.icu_4.4.2.v20110823.jar 
+				org.eclipse.text_3.5.101.v20110928-1504.jar 
+				org.eclipse.jface.text_3.7.2.v20111213-1208.jar 
+				org.eclipse.core.runtime_3.7.0.v20110110.jar 			
+				jawin.jar 
+				ant.jar 
+				commons-net-2.2.jar 
+				ftplet-api-1.0.5.jar 
+				ftpserver-core-1.0.5.jar 					
+				log4j-1.2.14.jar 
+				mina-core-2.0.0-RC1.jar 
+				slf4j-api-1.5.2.jar 
+				slf4j-log4j12-1.5.2.jar 					
+				jetty-continuation-7.3.0.v20110203.jar 
+				jetty-http-7.3.0.v20110203.jar 
+				jetty-io-7.3.0.v20110203.jar 
+				jetty-security-7.3.0.v20110203.jar 
+				jetty-server-7.3.0.v20110203.jar 
+				jetty-servlet-7.3.0.v20110203.jar 
+				jetty-util-7.3.0.v20110203.jar 
+				jetty-webapp-7.3.0.v20110203.jar 
+				jetty-xml-7.3.0.v20110203.jar 
+				servlet-api-2.5.jar"/>							
+			</manifest>
+			<zipfileset src="jar-in-jar-loader.zip" />
+			<fileset dir="./bin" />
+			<fileset dir="../swtchart/bin" />
+			<zipfileset dir="${eclipse.home}plugins" includes="org.eclipse.jface_3.7.0.v20110928-1505.jar" />
+			<zipfileset dir="${eclipse.home}plugins" includes="org.eclipse.equinox.common_3.6.0.v20110523.jar" />
+			<zipfileset dir="${eclipse.home}plugins" includes="org.eclipse.core.commands_3.6.0.I20110111-0800.jar" />
+			<zipfileset dir="${eclipse.home}plugins" includes="org.eclipse.swt.win32.win32.x86_3.7.2.v3740f.jar" />
+			<zipfileset dir="${eclipse.home}plugins" includes="org.eclipse.osgi_3.7.2.v20120110-1415.jar" />
+			<zipfileset dir="${eclipse.home}plugins" includes="org.eclipse.ui.forms_3.5.101.v20111011-1919.jar" />
+			<zipfileset dir="${eclipse.home}plugins" includes="com.ibm.icu_4.4.2.v20110823.jar" />
+			<zipfileset dir="${eclipse.home}plugins" includes="org.eclipse.jface.text_3.7.2.v20111213-1208.jar" />
+			<zipfileset dir="${eclipse.home}plugins" includes="org.eclipse.text_3.5.101.v20110928-1504.jar" />
+			<zipfileset dir="${eclipse.home}plugins" includes="org.eclipse.core.runtime_3.7.0.v20110110.jar" />
+			<zipfileset dir="./libs" includes="jawin.jar" />
+			<zipfileset dir="./libs" includes="ant.jar" />
+			<zipfileset dir="./libs/ftpserver" includes="commons-net-2.2.jar" />
+			<zipfileset dir="./libs/ftpserver" includes="ftplet-api-1.0.5.jar" />
+			<zipfileset dir="./libs/ftpserver" includes="ftpserver-core-1.0.5.jar" />
+			<zipfileset dir="./libs/ftpserver" includes="mina-core-2.0.0-RC1.jar" />
+			<zipfileset dir="./libs/ftpserver" includes="slf4j-api-1.5.2.jar" />
+			<zipfileset dir="./libs/ftpserver" includes="slf4j-log4j12-1.5.2.jar" />
+			<zipfileset dir="./libs/ftpserver" includes="log4j-1.2.14.jar" />
+			<zipfileset dir="./libs/jetty" includes="jetty-server-7.3.0.v20110203.jar" />
+			<zipfileset dir="./libs/jetty" includes="jetty-webapp-7.3.0.v20110203.jar" />
+			<zipfileset dir="./libs/jetty" includes="jetty-servlet-7.3.0.v20110203.jar" />
+			<zipfileset dir="./libs/jetty" includes="jetty-util-7.3.0.v20110203.jar" />
+			<zipfileset dir="./libs/jetty" includes="servlet-api-2.5.jar" />
+			<zipfileset dir="./libs/jetty" includes="jetty-http-7.3.0.v20110203.jar" />
+			<zipfileset dir="./libs/jetty" includes="jetty-io-7.3.0.v20110203.jar" />
+			<zipfileset dir="./libs/jetty" includes="jetty-security-7.3.0.v20110203.jar" />
+			<zipfileset dir="./libs/jetty" includes="jetty-xml-7.3.0.v20110203.jar" />
+			<zipfileset dir="./libs/jetty" includes="jetty-continuation-7.3.0.v20110203.jar" />
+		</jar>
+
+		<!-- Copy jawin.dll -->
+		<copy file="./libs/jawin.dll" todir="${RELEASE_DIRECTORY}" />
+
+		<!-- Create Zip help directory -->
+		<zip destfile="${RELEASE_DIRECTORY}help.zip" basedir="./help" encoding="UTF-8"/>
+
+		<!-- Copy matlab library files -->
+		<copy todir="${RELEASE_DIRECTORY}matlabscripts">
+			<fileset dir="./matlabscripts" excludes="**/extendedLibrary/**,process.m" />
+		</copy>
+		<delete dir="${RELEASE_DIRECTORY}matlabscripts/extendedLibrary/"/>
+		
+		<copy todir="${RELEASE_DIRECTORY}matlabscripts/library">
+			<fileset dir="./matlabscripts/library" />
+		</copy>
+
+		<!-- Copy native launcher -->
+		<copy file="${NATIVE_LAUNCHER_DIRECTORY}startAnalyse.exe" tofile="${RELEASE_DIRECTORY}startAnalyse.exe" />
+
+		<!-- Copy applyAnalyseUpdate.jar -->
+		<copy file="${APPLY_CHANGES_DIRECTORY}applyAnalyseUpdate.jar" todir="${RELEASE_DIRECTORY}" />
+		
+		<!-- Copy library.xml now, must be included in update files list -->
+		<copy file="./library.xml" tofile="${RELEASE_DIRECTORY}library.xml" />
+		
+		<!-- Copy bat launcher now, must not be included in update files list -->
+		<copy file="./WINDOWSAnalyseLauncher.bat" tofile="${RELEASE_DIRECTORY}WINDOWSAnalyseLauncher.bat" />
+
+		<!-- Create xml file of files list to update -->
+		<CreateXMLFilesListToUpdate fromFolder="${RELEASE_DIRECTORY}" fileName="${UPDATE_FILES_LIST_NAME}" destinationFolder="${RELEASE_DIRECTORY}" append="false" pathPrefix="" />
+		<CreateXMLFilesListToUpdate fromFolder="${RELEASE_DIRECTORY}matlabscripts" fileName="${UPDATE_FILES_LIST_NAME}" destinationFolder="${RELEASE_DIRECTORY}" append="true" pathPrefix="matlabscripts" />
+		<CreateXMLFilesListToUpdate fromFolder="${RELEASE_DIRECTORY}matlabscripts/library" fileName="${UPDATE_FILES_LIST_NAME}" destinationFolder="${RELEASE_DIRECTORY}" append="true" pathPrefix="matlabscripts/library" />
+
+		<!-- Copy analyse.ini now, must not be included in update files list -->
+		<copy file="analyse.ini" todir="${RELEASE_DIRECTORY}" />
+
+		<!-- Create xml file of files list to install -->
+		<CreateXMLFilesListToUpdate fromFolder="${RELEASE_DIRECTORY}" fileName="${RELEASE_FILES_LIST_NAME}" destinationFolder="${RELEASE_DIRECTORY}" append="false" pathPrefix="" exclude="${UPDATE_FILES_LIST_NAME}" />
+		<CreateXMLFilesListToUpdate fromFolder="${RELEASE_DIRECTORY}matlabscripts" fileName="${RELEASE_FILES_LIST_NAME}" destinationFolder="${RELEASE_DIRECTORY}" append="true" pathPrefix="matlabscripts" />
+		<CreateXMLFilesListToUpdate fromFolder="${RELEASE_DIRECTORY}matlabscripts/library" fileName="${RELEASE_FILES_LIST_NAME}" destinationFolder="${RELEASE_DIRECTORY}" append="true" pathPrefix="matlabscripts/library" />
+
+		<!-- Create SHA for huge files -->
+		<CreateChecksumFile fromFile="${RELEASE_DIRECTORY}analyse.jar" shaFileName="${RELEASE_DIRECTORY}analyse.sha" />
+		<CreateChecksumFile fromFile="${RELEASE_DIRECTORY}help.zip" shaFileName="${RELEASE_DIRECTORY}help.sha" />
+
+		<!-- Create version file -->
+		<CreateFileVersion fileName="${RELEASE_DIRECTORY}version.txt" />
+
+	</target>
+
+	<target name="Commit_changes_to_server">
+		<!-- Upload to ftp server -->
+		<ftp server="139.124.68.1" passive="yes" remotedir="/FTPRoot/Users/buloup/Sites/documents/Analyse/${FTP_RELEASE_FOLDER}" userid="buloup" password="slqb9999" depends="no">
+			<fileset dir="${RELEASE_DIRECTORY}" excludes=".project" />
+		</ftp>
+	</target>
+
+	<target name="check_files_versions">
+		<CheckFilesVersions distantFileURLName="http://www.ism.univmed.fr/buloup/documents/Analyse/${FTP_RELEASE_FOLDER}/version.txt" localFileURLName="file:///${workspace.loc}\\${RELEASE_NAME}\\version.txt" />
+	</target>
+
+</project>

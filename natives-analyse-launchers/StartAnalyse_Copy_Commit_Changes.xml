@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project default="copy_commit_MACintel_AnalyseLauncher_changes" name="StartAnalyse : copy, commit natives Analyse Launchers">
+	<!--this file was created by Eclipse Runnable JAR Export Wizard-->
+	<!--ANT 1.7 is required                                        -->
+
+	<typedef resource="org/tigris/subversion/svnant/svnantlib.xml" classpath="svnkitlibs" />
+
+	<echo message="eclipse.home is : ${eclipse.home}" />
+
+	<target name="copy_commit_MACintel_AnalyseLauncher_changes">
+		<echo message="MAC INTEL update, copy, commit..." />
+		<svn username="buloup" password="buloup021171">
+			<update dir="./startAnalyse/bin/macintel" />
+		</svn>
+		<svn username="buloup" password="buloup021171">
+			<update dir="./startAnalyse/src/macintel" />
+		</svn>
+
+		<copy todir="./startAnalyse/bin/macintel">
+			<fileset dir="./startAnalyse/src/macintel/build/release" />
+		</copy>
+
+		<svn username="buloup" password="buloup021171">
+			<commit dir="./startAnalyse/bin/macintel" message="Commited from ant file" />
+		</svn>
+		<svn username="buloup" password="buloup021171">
+			<commit dir="./startAnalyse/src/macintel" message="Commited from ant file" />
+		</svn>
+	</target>
+
+	<target name="copy_commit_MACppc__changes">
+		<echo message="MAC PPC update, copy, commit..." />
+		<svn username="buloup" password="buloup021171">
+			<update dir="./startAnalyse/bin/macppc" />
+		</svn>
+		<svn username="buloup" password="buloup021171">
+			<update dir="./startAnalyse/src/macppc" />
+		</svn>
+
+		<copy todir="./startAnalyse/bin/macppc">
+			<fileset dir="./startAnalyse/src/macppc/build/release" />
+		</copy>
+
+		<svn username="buloup" password="buloup021171">
+			<commit dir="./startAnalyse/bin/macppc" message="Commited from ant file" />
+		</svn>
+		<svn username="buloup" password="buloup021171">
+			<commit dir="./startAnalyse/src/macppc" message="Commited from ant file" />
+		</svn>
+	</target>
+
+	<target name="commit_windows__changes">
+		<echo message="WINDOWS update, commit..." />
+		<svn username="buloup" password="buloup021171">
+			<update dir="./startAnalyse/bin/windows" />
+		</svn>
+		<svn username="buloup" password="buloup021171">
+			<update dir="./startAnalyse/src/windows" />
+		</svn>
+		<svn username="buloup" password="buloup021171">
+			<commit dir="./startAnalyse/bin/windows" message="Commited from ant file" />
+		</svn>
+		<svn username="buloup" password="buloup021171">
+			<commit dir="./startAnalyse/src/windows" message="Commited from ant file" />
+		</svn>
+	</target>
+
+	<target name="commit_linuxgtk__changes">
+		<echo message="LINUX gtk update, commit..." />
+		<svn username="buloup" password="buloup021171">
+			<update dir="./startAnalyse/bin/linuxgtk" />
+		</svn>
+		<svn username="buloup" password="buloup021171">
+			<update dir="./startAnalyse/src/linuxgtk" />
+		</svn>
+		<svn username="buloup" password="buloup021171">
+			<commit dir="./startAnalyse/bin/linuxgtk" message="Commited from ant file" />
+		</svn>
+		<svn username="buloup" password="buloup021171">
+			<commit dir="./startAnalyse/src/linuxgtk" message="Commited from ant file" />
+		</svn>
+	</target>
+
+</project>

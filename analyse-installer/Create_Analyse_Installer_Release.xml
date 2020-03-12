@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project default="create_macintel_installer" name="AnalyseInstaller: create Runnable Jar, zip with native launcher, upload to ftp server (update commit changes src and releases)">
+	<!--this file was created by Eclipse Runnable JAR Export Wizard-->
+	<!--ANT 1.7 is required                                        -->
+
+	<!--<typedef resource="org/tigris/subversion/svnant/svnantlib.xml" classpath="svnkitlibs" />-->
+
+	<echo message="eclipse.home is : ${eclipse.home}" />
+
+	<!--
+	<target name="updates_commit">
+		<svn username="buloup" password="buloup021171">
+			<update dir="./src" />
+		</svn>
+		<svn username="buloup" password="buloup021171">
+			<commit dir="./src" message="Commited from ant file" />
+		</svn>
+		<svn username="buloup" password="buloup021171">
+			<update dir="./releases" />
+		</svn>
+	</target>
+	-->
+
+
+	<target name="create_windows_64_installer">
+
+		<delete file="./releases/WINDOWS64StartAnalyseInstaller.zip" />
+
+		<mkdir dir="./releases/windows" />
+
+		<jar destfile="./releases/windows/windows-analyse-installer.jar">
+			<manifest>
+				<attribute name="Main-Class" value="org.eclipse.jdt.internal.jarinjarloader.JarRsrcLoader" />
+				<attribute name="Rsrc-Main-Class" value="analyse_installer.WizardInstallerDialog" />
+				<attribute name="Class-Path" value="." />
+				<attribute name="Rsrc-Class-Path" value="./ 
+					org.eclipse.swt.win32.win32.x86_64_3.8.0.v3833.jar 
+					org.eclipse.jface_3.8.0.v20120521-2332.jar 
+					org.eclipse.equinox.common_3.6.100.v20120522-1841.jar 
+					org.eclipse.core.commands_3.6.1.v20120521-2332.jar 
+					org.eclipse.osgi_3.8.0.v20120529-1548.jar" />
+			</manifest>
+			<zipfileset src="../analyse/jar-in-jar-loader.zip" />
+			<fileset dir="./bin" />
+			<zipfileset dir="${eclipse.home}plugins" includes="org.eclipse.swt.win32.win32.x86_64_3.8.0.v3833.jar" />
+			<zipfileset dir="${eclipse.home}plugins" includes="org.eclipse.jface_3.8.0.v20120521-2332.jar" />
+			<zipfileset dir="${eclipse.home}plugins" includes="org.eclipse.equinox.common_3.6.100.v20120522-1841.jar" />
+			<zipfileset dir="${eclipse.home}plugins" includes="org.eclipse.core.commands_3.6.1.v20120521-2332.jar" />
+			<zipfileset dir="${eclipse.home}plugins" includes="org.eclipse.osgi_3.8.0.v20120529-1548.jar" />
+		</jar>
+
+		<zip destfile="./releases/WINDOWS64StartAnalyseInstaller.zip">
+			<fileset dir="./releases/windows" includes="windows-analyse-installer.jar">
+			</fileset>
+			<fileset dir="../natives-analyse-launchers/startAnalyseInstaller/bin/windows">
+			</fileset>
+		</zip>
+
+		<delete dir="./releases/windows" />
+		<!--
+		<svn username="buloup" password="buloup021171">
+			<commit file="./releases/WINDOWSStartAnalyseInstaller.zip" message="Commited from ant file" />
+		</svn>-->
+
+		<ftp server="139.124.68.1" userid="buloup" password="slqb9999" remotedir="Sites/documents" passive="yes">
+			<fileset dir="./releases">
+				<include name="WINDOWS64StartAnalyseInstaller.zip" />
+			</fileset>
+		</ftp>
+	</target>
+
+
+	<target name="create_windows_installer">
+
+		<delete file="./releases/WINDOWSStartAnalyseInstaller.zip" />
+
+		<mkdir dir="./releases/windows" />
+
+		<jar destfile="./releases/windows/windows-analyse-installer.jar">
+			<manifest>
+				<attribute name="Main-Class" value="org.eclipse.jdt.internal.jarinjarloader.JarRsrcLoader" />
+				<attribute name="Rsrc-Main-Class" value="analyse_installer.WizardInstallerDialog" />
+				<attribute name="Class-Path" value="." />
+				<attribute name="Rsrc-Class-Path" value="./ 
+					org.eclipse.swt.win32.win32.x86_3.7.2.v3740f.jar 
+					org.eclipse.jface_3.7.0.v20110928-1505.jar 
+					org.eclipse.equinox.common_3.6.0.v20110523.jar 
+					org.eclipse.core.commands_3.6.0.I20110111-0800.jar 
+					org.eclipse.osgi_3.7.2.v20120110-1415.jar" />
+			</manifest>
+			<zipfileset src="../analyse/jar-in-jar-loader.zip" />
+			<fileset dir="./bin" />
+			<zipfileset dir="${eclipse.home}plugins" includes="org.eclipse.swt.win32.win32.x86_3.7.2.v3740f.jar" />
+			<zipfileset dir="${eclipse.home}plugins" includes="org.eclipse.jface_3.7.0.v20110928-1505.jar" />
+			<zipfileset dir="${eclipse.home}plugins" includes="org.eclipse.equinox.common_3.6.0.v20110523.jar" />
+			<zipfileset dir="${eclipse.home}plugins" includes="org.eclipse.core.commands_3.6.0.I20110111-0800.jar" />
+			<zipfileset dir="${eclipse.home}plugins" includes="org.eclipse.osgi_3.7.2.v20120110-1415.jar" />
+		</jar>
+
+		<zip destfile="./releases/WINDOWSStartAnalyseInstaller.zip">
+			<fileset dir="./releases/windows" includes="windows-analyse-installer.jar">
+			</fileset>
+			<fileset dir="../natives-analyse-launchers/startAnalyseInstaller/bin/windows">
+			</fileset>
+		</zip>
+
+		<delete dir="./releases/windows" />
+		<!--
+		<svn username="buloup" password="buloup021171">
+			<commit file="./releases/WINDOWSStartAnalyseInstaller.zip" message="Commited from ant file" />
+		</svn>-->
+
+		<ftp server="139.124.68.1" userid="buloup" password="slqb9999" remotedir="Sites/documents" passive="yes">
+			<fileset dir="./releases">
+				<include name="WINDOWSStartAnalyseInstaller.zip" />
+			</fileset>
+		</ftp>
+	</target>
+
+	<target name="create_linuxgtk_installer">
+
+		<delete file="./releases/LINUXgtkStartAnalyseInstaller.tar" />
+
+		<mkdir dir="./releases/linuxgtk" />
+
+		<jar destfile="./releases/linuxgtk/linuxgtk-analyse-installer.jar">
+			<manifest>
+				<attribute name="Main-Class" value="org.eclipse.jdt.internal.jarinjarloader.JarRsrcLoader" />
+				<attribute name="Rsrc-Main-Class" value="analyse_installer.WizardInstallerDialog" />
+				<attribute name="Class-Path" value="." />
+				<attribute name="Rsrc-Class-Path" value="./ 
+					org.eclipse.swt.gtk.linux.x86_3.7.2.v3740f.jar 
+					org.eclipse.jface_3.7.0.v20110928-1505.jar 
+					org.eclipse.equinox.common_3.6.0.v20110523.jar 
+					org.eclipse.core.commands_3.6.0.I20110111-0800.jar 
+					org.eclipse.osgi_3.7.2.v20120110-1415.jar" />
+			</manifest>
+			<zipfileset src="../analyse/jar-in-jar-loader.zip" />
+			<fileset dir="./bin" />
+			<zipfileset dir="${eclipse.home}plugins" includes="org.eclipse.swt.gtk.linux.x86_3.7.2.v3740f.jar" />
+			<zipfileset dir="${eclipse.home}plugins" includes="org.eclipse.jface_3.7.0.v20110928-1505.jar" />
+			<zipfileset dir="${eclipse.home}plugins" includes="org.eclipse.equinox.common_3.6.0.v20110523.jar" />
+			<zipfileset dir="${eclipse.home}plugins" includes="org.eclipse.core.commands_3.6.0.I20110111-0800.jar" />
+			<zipfileset dir="${eclipse.home}plugins" includes="org.eclipse.osgi_3.7.2.v20120110-1415.jar" />
+		</jar>
+
+		<tar destfile="./releases/LINUXgtkStartAnalyseInstaller.tar">
+			<tarfileset dir="./releases/linuxgtk" includes="linuxgtk-analyse-installer.jar">
+			</tarfileset>
+			<tarfileset dir="../natives-analyse-launchers/startAnalyseInstaller/bin/linuxgtk" filemode="755">
+			</tarfileset>
+		</tar>
+
+		<delete dir="./releases/linuxgtk" />
+		<!--
+		<svn username="buloup" password="buloup021171">
+			<commit file="./releases/LINUXgtkStartAnalyseInstaller.tar" message="Commited from ant file" />
+		</svn>-->
+
+		<ftp server="139.124.68.1" userid="buloup" password="slqb9999" remotedir="Sites/documents" passive="yes">
+			<fileset dir="./releases">
+				<include name="LINUXgtkStartAnalyseInstaller.tar" />
+			</fileset>
+		</ftp>
+	</target>
+
+	<target name="create_macintel_installer">
+
+		<delete file="./releases/OSXintelStartAnalyseInstaller.dmg" />
+		<delete file="./releases/macintel/OSXintel-analyse-installer.jar" />
+		<delete dir="./releases/macintel/startAnalyseInstaller.app" />
+
+		<copydir dest="./releases/macintel/" src="../natives-analyse-launchers/startAnalyseInstaller/bin/macintel/" />
+		<chmod file="./releases/macintel/startAnalyseInstaller.app/Contents/MacOS/startAnalyseInstaller" perm="755" />
+
+		<jar destfile="./releases/macintel/OSXintel-analyse-installer.jar">
+			<manifest>
+				<attribute name="Version" value="1.0" />
+				<attribute name="Main-Class" value="org.eclipse.jdt.internal.jarinjarloader.JarRsrcLoader" />
+				<attribute name="Rsrc-Main-Class" value="analyse_installer.WizardInstallerDialog" />
+				<attribute name="Class-Path" value="." />
+				<attribute name="Rsrc-Class-Path" value="./ org.eclipse.swt.cocoa.macosx.x86_64_3.106.3.v20180329-0507.jar org.eclipse.jface_3.13.2.v20171022-1656.jar org.eclipse.equinox.common_3.9.0.v20170207-1454.jar org.eclipse.core.commands_3.9.0.v20170530-1048.jar org.eclipse.osgi_3.12.100.v20180210-1608.jar" />
+			</manifest>
+			<zipfileset src="../analyse/jar-in-jar-loader.zip" />
+			<fileset dir="./bin" />
+			<zipfileset dir="${eclipse.home}plugins" excludes="META-INF/*.SF" includes="org.eclipse.swt.cocoa.macosx.x86_64_3.106.3.v20180329-0507.jar" />
+			<zipfileset dir="${eclipse.home}plugins" excludes="META-INF/*.SF" includes="org.eclipse.osgi_3.12.100.v20180210-1608.jar" />
+			<zipfileset dir="${eclipse.home}plugins" excludes="META-INF/*.SF" includes="org.eclipse.jface_3.13.2.v20171022-1656.jar" />
+			<zipfileset dir="${eclipse.home}plugins" excludes="META-INF/*.SF" includes="org.eclipse.equinox.common_3.9.0.v20170207-1454.jar" />
+			<zipfileset dir="${eclipse.home}plugins" excludes="META-INF/*.SF" includes="org.eclipse.core.commands_3.9.0.v20170530-1048.jar" />
+		</jar>
+
+		<!--<jar destfile="./releases/macintel/OSXintel-analyse-installer.jar">
+			<manifest>
+				<attribute name="Main-Class" value="org.eclipse.jdt.internal.jarinjarloader.JarRsrcLoader" />
+				<attribute name="Rsrc-Main-Class" value="analyse_installer.WizardInstallerDialog" />
+				<attribute name="Class-Path" value="." />
+				<attribute name="Rsrc-Class-Path" value="./ org.eclipse.swt.cocoa.macosx.x86_64_3.106.3.v20180329-0507.jar org.eclipse.jface_3.13.2.v20171022-1656.jar org.eclipse.equinox.common_3.9.0.v20170207-1454.jar org.eclipse.core.commands_3.9.0.v20170530-1048.jar org.eclipse.osgi_3.12.100.v20180210-1608.jar" />
+			</manifest>
+			<zipfileset src="../analyse/jar-in-jar-loader.zip" />
+			<fileset dir="./bin" />
+			<zipfileset dir="${eclipse.home}plugins" includes="org.eclipse.swt.cocoa.macosx.x86_64_3.106.3.v20180329-0507.jar" />
+			<zipfileset dir="${eclipse.home}plugins" includes="org.eclipse.jface_3.13.2.v20171022-1656.jar" />
+			<zipfileset dir="${eclipse.home}plugins" includes="org.eclipse.equinox.common_3.9.0.v20170207-1454.jar" />
+			<zipfileset dir="${eclipse.home}plugins" includes="org.eclipse.core.commands_3.9.0.v20170530-1048.jar" />
+			<zipfileset dir="${eclipse.home}plugins" includes="org.eclipse.osgi_3.12.100.v20180210-1608.jar" />
+		</jar>-->
+
+		<exec executable="hdiutil">
+			<arg line="create -volname 'OSX_Analyse_Installer' -srcfolder ./releases/macintel ./releases/OSXintelStartAnalyseInstaller.dmg" />
+		</exec>
+
+		<delete dir="./releases/macintel" />
+		<!--
+		<svn username="buloup" password="buloup021171">
+			<commit file="./releases/OSXintelStartAnalyseInstaller.dmg" message="Commited from ant file" />
+		</svn>-->
+
+		<ftp server="139.124.68.1" userid="buloup" password="slqb9999" remotedir="Sites/documents" passive="no">
+			<fileset dir="./releases">
+				<include name="OSXintelStartAnalyseInstaller.dmg" />
+			</fileset>
+		</ftp>
+	</target>
+
+	<target name="create_macppc_installer">
+
+		<delete file="./releases/OSXppcStartAnalyseInstaller.dmg" />
+		<delete file="./releases/macppc/OSXppc-analyse-installer.jar" />
+		<delete dir="./releases/macppc/startAnalyseInstaller.app" />
+
+		<copydir dest="./releases/macppc/" src="../natives-analyse-launchers/startAnalyseInstaller/bin/macppc/" />
+		<chmod file="./releases/macppc/startAnalyseInstaller.app/Contents/MacOS/startAnalyseInstaller" perm="755" />
+
+
+		<jar destfile="./releases/macppc/OSXppc-analyse-installer.jar">
+			<manifest>
+				<attribute name="Main-Class" value="org.eclipse.jdt.internal.jarinjarloader.JarRsrcLoader" />
+				<attribute name="Rsrc-Main-Class" value="analyse_installer.WizardInstallerDialog" />
+				<attribute name="Class-Path" value="." />
+				<attribute name="Rsrc-Class-Path" value="./ org.eclipse.swt.carbon.macosx_3.5.1.v3555a.jar org.eclipse.jface_3.5.1.M20090826-0800.jar org.eclipse.equinox.common_3.5.1.R35x_v20090807-1100.jar org.eclipse.core.commands_3.5.0.I20090525-2000.jar org.eclipse.osgi_3.5.1.R35x_v20090827.jar" />
+			</manifest>
+			<zipfileset src="../analyse/jar-in-jar-loader.zip" />
+			<fileset dir="./bin" />
+			<zipfileset dir="${eclipse.home}plugins" includes="org.eclipse.swt.carbon.macosx_3.5.1.v3555a.jar" />
+			<zipfileset dir="${eclipse.home}plugins" includes="org.eclipse.jface_3.5.1.M20090826-0800.jar" />
+			<zipfileset dir="${eclipse.home}plugins" includes="org.eclipse.equinox.common_3.5.1.R35x_v20090807-1100.jar" />
+			<zipfileset dir="${eclipse.home}plugins" includes="org.eclipse.core.commands_3.5.0.I20090525-2000.jar" />
+			<zipfileset dir="${eclipse.home}plugins" includes="org.eclipse.osgi_3.5.1.R35x_v20090827.jar" />
+		</jar>
+
+		<exec executable="hdiutil">
+			<arg line="create -volname 'OSX_Analyse_Installer' -srcfolder ./releases/macppc ./releases/OSXppcStartAnalyseInstaller.dmg" />
+		</exec>
+
+		<delete dir="./releases/macppc" />
+		<!--
+		<svn username="buloup" password="buloup021171">
+			<commit file="./releases/OSXppcStartAnalyseInstaller.dmg" message="Commited from ant file" />
+		</svn>-->
+
+		<ftp server="139.124.68.1" userid="buloup" password="slqb9999" remotedir="Sites/documents" passive="yes">
+			<fileset dir="./releases">
+				<include name="OSXppcStartAnalyseInstaller.dmg" />
+			</fileset>
+		</ftp>
+
+	</target>
+
+	<target name="create_macintel_carbon_installer">
+
+		<delete file="./releases/OSXintelCarbonStartAnalyseInstaller.dmg" />
+		<delete file="./releases/macintelcarbon/OSXintel-carbon-analyse-installer.jar" />
+		<delete file="./releases/macintelcarbon/OSXintel-analyse-installer.jar" />
+		<delete dir="./releases/macintelcarbon/startAnalyseInstaller.app" />
+
+		<copydir dest="./releases/macintelcarbon/" src="../natives-analyse-launchers/startAnalyseInstaller/bin/macintel/" />
+		<chmod file="./releases/macintelcarbon/startAnalyseInstaller.app/Contents/MacOS/startAnalyseInstaller" perm="755" />
+
+		<jar destfile="./releases/macintelcarbon/OSXintel-analyse-installer.jar">
+			<manifest>
+				<attribute name="Main-Class" value="org.eclipse.jdt.internal.jarinjarloader.JarRsrcLoader" />
+				<attribute name="Rsrc-Main-Class" value="analyse_installer.WizardInstallerDialog" />
+				<attribute name="Class-Path" value="." />
+				<attribute name="Rsrc-Class-Path" value="./ org.eclipse.swt.carbon.macosx_3.5.1.v3555a.jar org.eclipse.jface_3.5.1.M20090826-0800.jar org.eclipse.equinox.common_3.5.1.R35x_v20090807-1100.jar org.eclipse.core.commands_3.5.0.I20090525-2000.jar org.eclipse.osgi_3.5.1.R35x_v20090827.jar" />
+			</manifest>
+			<zipfileset src="../analyse/jar-in-jar-loader.zip" />
+			<fileset dir="./bin" />
+			<zipfileset dir="${eclipse.home}plugins" includes="org.eclipse.swt.carbon.macosx_3.5.1.v3555a.jar" />
+			<zipfileset dir="${eclipse.home}plugins" includes="org.eclipse.jface_3.5.1.M20090826-0800.jar" />
+			<zipfileset dir="${eclipse.home}plugins" includes="org.eclipse.equinox.common_3.5.1.R35x_v20090807-1100.jar" />
+			<zipfileset dir="${eclipse.home}plugins" includes="org.eclipse.core.commands_3.5.0.I20090525-2000.jar" />
+			<zipfileset dir="${eclipse.home}plugins" includes="org.eclipse.osgi_3.5.1.R35x_v20090827.jar" />
+		</jar>
+
+		<exec executable="hdiutil">
+			<arg line="create -volname 'OSX_Analyse_Installer' -srcfolder ./releases/macintelcarbon ./releases/OSXintelCarbonStartAnalyseInstaller.dmg" />
+		</exec>
+
+		<delete dir="./releases/macintelcarbon" />
+		<!--
+		<svn username="buloup" password="buloup021171">
+			<commit file="./releases/OSXintelCarbonStartAnalyseInstaller.dmg" message="Commited from ant file" />
+		</svn>-->
+
+		<ftp server="139.124.68.1" userid="buloup" password="slqb9999" remotedir="Sites/documents" passive="yes">
+			<fileset dir="./releases">
+				<include name="OSXintelCarbonStartAnalyseInstaller.dmg" />
+			</fileset>
+		</ftp>
+
+	</target>
+
+
+
+</project>
