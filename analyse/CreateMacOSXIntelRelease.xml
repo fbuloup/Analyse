@@ -4,7 +4,7 @@
 	<!--ANT 1.7 is required                                        -->
 
 	<property name="RELEASE_NAME" value="MACOSX_INTEL_ANALYSE_RELEASE" />
-	<property name="RELEASE_DIRECTORY" value="../MACOSX_INTEL_ANALYSE_RELEASE/" />
+	<property name="RELEASE_DIRECTORY" value="${workspace.loc}/MACOSX_INTEL_ANALYSE_RELEASE/" />
 	<property name="NATIVE_LAUNCHER_DIRECTORY" value="..\natives-analyse-launchers\startAnalyse\bin\macintel\" />
 	<property name="UPDATE_FILES_LIST_NAME" value="updateFilesList.xml" />
 	<property name="RELEASE_FILES_LIST_NAME" value="releaseFilesList.xml" />
