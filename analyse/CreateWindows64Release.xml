@@ -2,14 +2,18 @@
 <project default="check_files_versions" name="Check versions - Commit - Create Releases 64 bits">
 	<!--this file was created by Eclipse Runnable JAR Export Wizard-->
 	<!--ANT 1.7 is required                                        -->
+	
+	
+	<!-- C:\Users\frank\git\Analyse -->
 
+	<property name="GIT_DIRECTORY" value="C:\Users\frank\git\Analyse" />
 	<property name="RELEASE_NAME" value="WINDOWS_ANALYSE_RELEASE" />
 	<property name="RELEASE_DIRECTORY" value="${workspace.loc}/WINDOWS_ANALYSE_RELEASE/" />
-	<property name="NATIVE_LAUNCHER_DIRECTORY" value="${workspace.loc}/natives-analyse-launchers/startAnalyse/bin/windows/" />
+	<property name="NATIVE_LAUNCHER_DIRECTORY" value="${GIT_DIRECTORY}/natives-analyse-launchers/startAnalyse/bin/windows/" />
 	<property name="UPDATE_FILES_LIST_NAME" value="updateFilesList.xml" />
 	<property name="RELEASE_FILES_LIST_NAME" value="releaseFilesList.xml" />
 	<property name="FTP_RELEASE_FOLDER" value="windows_64_release" />
-	<property name="APPLY_CHANGES_DIRECTORY" value="${workspace.loc}/apply-analyse-changes/" />
+	<property name="APPLY_CHANGES_DIRECTORY" value="${GIT_DIRECTORY}/apply-analyse-changes/" />
 
 	<taskdef name="CreateXMLFilesListToUpdate" classname="anttasks.CreateXMLFilesListToUpdateTask" classpath="./libs/CreateXMLFilesListToUpdateTask.jar" />
 	<taskdef name="CreateChecksumFile" classname="anttasks.CreateChecksumFileTask" classpath="./libs/CreateChecksumFileTask.jar" />
@@ -37,16 +41,16 @@
 				<attribute name="Rsrc-Main-Class" value="analyse.AnalyseApplication" />
 				<attribute name="Class-Path" value="." />
 				<attribute name="Rsrc-Class-Path" value="./ 
-				org.eclipse.jface_3.13.2.v20171022-1656.jar
-				org.eclipse.equinox.common_3.9.0.v20170207-1454.jar
-				org.eclipse.core.commands_3.9.0.v20170530-1048.jar
-				org.eclipse.swt.win32.win32.x86_64_3.106.2.v20171129-0543.jar
-				org.eclipse.osgi_3.12.50.v20170928-1321.jar
-				org.eclipse.ui.forms_3.7.101.v20170815-1446.jar
-				com.ibm.icu_58.2.0.v20170418-1837.jar
-				org.eclipse.jface.text_3.12.1.v20171114-1359.jar
-				org.eclipse.text_3.6.100.v20170203-0814
-				org.eclipse.core.runtime_3.13.0.v20170207-1030.jar
+				org.eclipse.jface_3.18.0.v20191122-2109.jar
+				org.eclipse.equinox.common_3.10.600.v20191004-1420.jar
+				org.eclipse.core.commands_3.9.600.v20191122-2109.jar
+				org.eclipse.swt.win32.win32.x86_64_3.113.0.v20191204-0601.jar
+				org.eclipse.osgi_3.15.100.v20191114-1701.jar
+				org.eclipse.ui.forms_3.8.200.v20191114-0830.jar
+				com.ibm.icu_64.2.0.v20190507-1337.jar
+				org.eclipse.jface.text_3.16.100.v20191203-1634.jar
+				org.eclipse.text_3.10.0.v20191122-2108.jar
+				org.eclipse.core.runtime_3.17.0.v20191122-2104.jar
 				jacob.jar
 				ant.jar 
 				commons-net-2.2.jar 
@@ -68,54 +72,54 @@
 				servlet-api-2.5.jar"/>							
 			</manifest>
 			<zipfileset src="jar-in-jar-loader.zip" />
-			<fileset dir="./bin" />
-			<fileset dir="../swtchart/bin" />
-			<zipfileset dir="${eclipse.home}plugins" includes="org.eclipse.jface_3.13.2.v20171022-1656.jar" />
-			<zipfileset dir="${eclipse.home}plugins" includes="org.eclipse.equinox.common_3.9.0.v20170207-1454.jar" />
-			<zipfileset dir="${eclipse.home}plugins" includes="org.eclipse.core.commands_3.9.0.v20170530-1048.jar" />
-			<zipfileset dir="${eclipse.home}plugins" includes="org.eclipse.swt.win32.win32.x86_64_3.106.2.v20171129-0543.jar" />
-			<zipfileset dir="${eclipse.home}plugins" includes="org.eclipse.osgi_3.12.50.v20170928-1321.jar" />
-			<zipfileset dir="${eclipse.home}plugins" includes="org.eclipse.ui.forms_3.7.101.v20170815-1446.jar" />
-			<zipfileset dir="${eclipse.home}plugins" includes="com.ibm.icu_58.2.0.v20170418-1837.jar" />
-			<zipfileset dir="${eclipse.home}plugins" includes="org.eclipse.jface.text_3.12.1.v20171114-1359.jar" />
-			<zipfileset dir="${eclipse.home}plugins" includes="org.eclipse.text_3.6.100.v20170203-0814" />
-			<zipfileset dir="${eclipse.home}plugins" includes="org.eclipse.core.runtime_3.13.0.v20170207-1030.jar" />
-			<zipfileset dir="./libs" includes="jacob.jar" />
-			<zipfileset dir="./libs" includes="ant.jar" />
-			<zipfileset dir="./libs/ftpserver" includes="commons-net-2.2.jar" />
-			<zipfileset dir="./libs/ftpserver" includes="ftplet-api-1.0.5.jar" />
-			<zipfileset dir="./libs/ftpserver" includes="ftpserver-core-1.0.5.jar" />
-			<zipfileset dir="./libs/ftpserver" includes="mina-core-2.0.0-RC1.jar" />
-			<zipfileset dir="./libs/ftpserver" includes="slf4j-api-1.5.2.jar" />
-			<zipfileset dir="./libs/ftpserver" includes="slf4j-log4j12-1.5.2.jar" />
-			<zipfileset dir="./libs/ftpserver" includes="log4j-1.2.14.jar" />
-			<zipfileset dir="./libs/jetty" includes="jetty-server-7.3.0.v20110203.jar" />
-			<zipfileset dir="./libs/jetty" includes="jetty-webapp-7.3.0.v20110203.jar" />
-			<zipfileset dir="./libs/jetty" includes="jetty-servlet-7.3.0.v20110203.jar" />
-			<zipfileset dir="./libs/jetty" includes="jetty-util-7.3.0.v20110203.jar" />
-			<zipfileset dir="./libs/jetty" includes="servlet-api-2.5.jar" />
-			<zipfileset dir="./libs/jetty" includes="jetty-http-7.3.0.v20110203.jar" />
-			<zipfileset dir="./libs/jetty" includes="jetty-io-7.3.0.v20110203.jar" />
-			<zipfileset dir="./libs/jetty" includes="jetty-security-7.3.0.v20110203.jar" />
-			<zipfileset dir="./libs/jetty" includes="jetty-xml-7.3.0.v20110203.jar" />
-			<zipfileset dir="./libs/jetty" includes="jetty-continuation-7.3.0.v20110203.jar" />
+			<fileset dir="${GIT_DIRECTORY}/analyse/bin" />
+			<fileset dir="${GIT_DIRECTORY}/swtchart/bin" />
+			<zipfileset dir="${eclipse.home}plugins" includes="org.eclipse.jface_3.18.0.v20191122-2109.jar" />
+			<zipfileset dir="${eclipse.home}plugins" includes="org.eclipse.equinox.common_3.10.600.v20191004-1420.jar" />
+			<zipfileset dir="${eclipse.home}plugins" includes="org.eclipse.core.commands_3.9.600.v20191122-2109.jar" />
+			<zipfileset dir="${eclipse.home}plugins" includes="org.eclipse.swt.win32.win32.x86_64_3.113.0.v20191204-0601.jar" />
+			<zipfileset dir="${eclipse.home}plugins" includes="org.eclipse.osgi_3.15.100.v20191114-1701.jar" />
+			<zipfileset dir="${eclipse.home}plugins" includes="org.eclipse.ui.forms_3.8.200.v20191114-0830.jar" />
+			<zipfileset dir="${eclipse.home}plugins" includes="com.ibm.icu_64.2.0.v20190507-1337.jar" />
+			<zipfileset dir="${eclipse.home}plugins" includes="org.eclipse.jface.text_3.16.100.v20191203-1634.jar" />
+			<zipfileset dir="${eclipse.home}plugins" includes="org.eclipse.text_3.10.0.v20191122-2108.jar" />
+			<zipfileset dir="${eclipse.home}plugins" includes="org.eclipse.core.runtime_3.17.0.v20191122-2104.jar" />
+			<zipfileset dir="${GIT_DIRECTORY}/analyse/libs" includes="jacob.jar" />
+			<zipfileset dir="${GIT_DIRECTORY}/analyse/libs" includes="ant.jar" />
+			<zipfileset dir="${GIT_DIRECTORY}/analyse/libs/ftpserver" includes="commons-net-2.2.jar" />
+			<zipfileset dir="${GIT_DIRECTORY}/analyse/libs/ftpserver" includes="ftplet-api-1.0.5.jar" />
+			<zipfileset dir="${GIT_DIRECTORY}/analyse/libs/ftpserver" includes="ftpserver-core-1.0.5.jar" />
+			<zipfileset dir="${GIT_DIRECTORY}/analyse/libs/ftpserver" includes="mina-core-2.0.0-RC1.jar" />
+			<zipfileset dir="${GIT_DIRECTORY}/analyse/libs/ftpserver" includes="slf4j-api-1.5.2.jar" />
+			<zipfileset dir="${GIT_DIRECTORY}/analyse/libs/ftpserver" includes="slf4j-log4j12-1.5.2.jar" />
+			<zipfileset dir="${GIT_DIRECTORY}/analyse/libs/ftpserver" includes="log4j-1.2.14.jar" />
+			<zipfileset dir="${GIT_DIRECTORY}/analyse/libs/jetty" includes="jetty-server-7.3.0.v20110203.jar" />
+			<zipfileset dir="${GIT_DIRECTORY}/analyse/libs/jetty" includes="jetty-webapp-7.3.0.v20110203.jar" />
+			<zipfileset dir="${GIT_DIRECTORY}/analyse/libs/jetty" includes="jetty-servlet-7.3.0.v20110203.jar" />
+			<zipfileset dir="${GIT_DIRECTORY}/analyse/libs/jetty" includes="jetty-util-7.3.0.v20110203.jar" />
+			<zipfileset dir="${GIT_DIRECTORY}/analyse/libs/jetty" includes="servlet-api-2.5.jar" />
+			<zipfileset dir="${GIT_DIRECTORY}/analyse/libs/jetty" includes="jetty-http-7.3.0.v20110203.jar" />
+			<zipfileset dir="${GIT_DIRECTORY}/analyse/libs/jetty" includes="jetty-io-7.3.0.v20110203.jar" />
+			<zipfileset dir="${GIT_DIRECTORY}/analyse/libs/jetty" includes="jetty-security-7.3.0.v20110203.jar" />
+			<zipfileset dir="${GIT_DIRECTORY}/analyse/libs/jetty" includes="jetty-xml-7.3.0.v20110203.jar" />
+			<zipfileset dir="${GIT_DIRECTORY}/analyse/libs/jetty" includes="jetty-continuation-7.3.0.v20110203.jar" />
 		</jar>
 
 		<!-- Copy jacob.dlls -->
-		<copy file="./libs/jacob-1.18-M2-x64.dll" todir="${RELEASE_DIRECTORY}" />
-		<copy file="./libs/jacob-1.18-M2-x86.dll" todir="${RELEASE_DIRECTORY}" />
+		<copy file="${GIT_DIRECTORY}/analyse/libs/jacob-1.18-M2-x64.dll" todir="${RELEASE_DIRECTORY}" />
+		<copy file="${GIT_DIRECTORY}/analyse/libs/jacob-1.18-M2-x86.dll" todir="${RELEASE_DIRECTORY}" />
 
 		<!-- Create Zip help directory -->
-		<zip destfile="${RELEASE_DIRECTORY}help.zip" basedir="./help" encoding="UTF-8"/>
+		<zip destfile="${RELEASE_DIRECTORY}help.zip" basedir="${GIT_DIRECTORY}/analyse/help" encoding="UTF-8"/>
 
 		<!-- Copy matlab library files -->
 		<copy todir="${RELEASE_DIRECTORY}matlabscripts">
-			<fileset dir="./matlabscripts" excludes="**/extendedLibrary/**,process.m" />
+			<fileset dir="${GIT_DIRECTORY}/analyse/matlabscripts" excludes="**/extendedLibrary/**,process.m" />
 		</copy>
 		<delete dir="${RELEASE_DIRECTORY}matlabscripts/extendedLibrary/"/>
 		
 		<copy todir="${RELEASE_DIRECTORY}matlabscripts/library">
-			<fileset dir="./matlabscripts/library" />
+			<fileset dir="${GIT_DIRECTORY}/analyse/matlabscripts/library" />
 		</copy>
 
 		<!-- Copy native launcher -->
@@ -125,10 +129,10 @@
 		<copy file="${APPLY_CHANGES_DIRECTORY}applyAnalyseUpdate.jar" todir="${RELEASE_DIRECTORY}" />
 		
 		<!-- Copy library.xml now, must be included in update files list -->
-		<copy file="./library.xml" tofile="${RELEASE_DIRECTORY}library.xml" />
+		<copy file="${GIT_DIRECTORY}/analyse/library.xml" tofile="${RELEASE_DIRECTORY}library.xml" />
 		
 		<!-- Copy bat launcher now, must not be included in update files list -->
-		<copy file="./WINDOWSAnalyseLauncher.bat" tofile="${RELEASE_DIRECTORY}WINDOWSAnalyseLauncher.bat" />
+		<copy file="${GIT_DIRECTORY}/analyse/WINDOWSAnalyseLauncher.bat" tofile="${RELEASE_DIRECTORY}WINDOWSAnalyseLauncher.bat" />
 
 		<!-- Create xml file of files list to update -->
 		<CreateXMLFilesListToUpdate fromFolder="${RELEASE_DIRECTORY}" fileName="${UPDATE_FILES_LIST_NAME}" destinationFolder="${RELEASE_DIRECTORY}" append="false" pathPrefix="" />
