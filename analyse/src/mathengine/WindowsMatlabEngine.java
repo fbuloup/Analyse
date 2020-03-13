@@ -999,9 +999,14 @@ public final class WindowsMatlabEngine implements IMathEngine {
 
 	private String clearStringValue(String response) {
 		response = response.replaceAll("(\\n)*", "");
+		response = response.replaceAll("logical", "");
+		response = response.replaceAll("\\}", "");
+		response = response.replaceAll("\\{", "");
 		response = response.replaceAll("(\\s)*", "");
 		response = response.replaceAll("^ans\\s*=\\s*", "");
 		response = response.replaceAll("=", "");
+		response = response.replaceAll("\\d+x\\d+cellarray", "");
+		response = response.replaceAll(">", "");
 		return response;
 	}
 
