@@ -4,6 +4,8 @@
 	<!--ANT 1.7 is required                                        -->
 
 	<!--<typedef resource="org/tigris/subversion/svnant/svnantlib.xml" classpath="svnkitlibs" />-->
+		
+	<include file = "../analyse/FtpLoginProperties.xml" as="FtpProperties"/>
 
 	<echo message="eclipse.home is : ${eclipse.home}" />
 
@@ -62,7 +64,7 @@
 			<commit file="./releases/WINDOWSStartAnalyseInstaller.zip" message="Commited from ant file" />
 		</svn>-->
 
-		<ftp server="139.124.68.1" userid="buloup" password="slqb9999" remotedir="Sites/documents" passive="yes">
+		<ftp server="${ftp.ip}" userid="${ftp.login}" password="${ftp.password}" remotedir="Sites/documents" passive="no">
 			<fileset dir="./releases">
 				<include name="WINDOWS64StartAnalyseInstaller.zip" />
 			</fileset>
@@ -110,7 +112,7 @@
 			<commit file="./releases/WINDOWSStartAnalyseInstaller.zip" message="Commited from ant file" />
 		</svn>-->
 
-		<ftp server="139.124.68.1" userid="buloup" password="slqb9999" remotedir="Sites/documents" passive="yes">
+		<ftp server="${ftp.ip}" userid="${ftp.login}" password="${ftp.password}" remotedir="Sites/documents" passive="no">
 			<fileset dir="./releases">
 				<include name="WINDOWSStartAnalyseInstaller.zip" />
 			</fileset>
@@ -157,7 +159,7 @@
 			<commit file="./releases/LINUXgtkStartAnalyseInstaller.tar" message="Commited from ant file" />
 		</svn>-->
 
-		<ftp server="139.124.68.1" userid="buloup" password="slqb9999" remotedir="Sites/documents" passive="yes">
+		<ftp server="${ftp.ip}" userid="${ftp.login}" password="${ftp.password}" remotedir="Sites/documents" passive="no">
 			<fileset dir="./releases">
 				<include name="LINUXgtkStartAnalyseInstaller.tar" />
 			</fileset>
@@ -216,7 +218,7 @@
 			<commit file="./releases/OSXintelStartAnalyseInstaller.dmg" message="Commited from ant file" />
 		</svn>-->
 
-		<ftp server="139.124.68.1" userid="buloup" password="slqb9999" remotedir="Sites/documents" passive="no">
+		<ftp server="${ftp.ip}" userid="${ftp.login}" password="${ftp.password}" remotedir="Sites/documents" passive="no">
 			<fileset dir="./releases">
 				<include name="OSXintelStartAnalyseInstaller.dmg" />
 			</fileset>
@@ -259,7 +261,7 @@
 			<commit file="./releases/OSXppcStartAnalyseInstaller.dmg" message="Commited from ant file" />
 		</svn>-->
 
-		<ftp server="139.124.68.1" userid="buloup" password="slqb9999" remotedir="Sites/documents" passive="yes">
+		<ftp server="${ftp.ip}" userid="${ftp.login}" password="${ftp.password}" remotedir="Sites/documents" passive="no">
 			<fileset dir="./releases">
 				<include name="OSXppcStartAnalyseInstaller.dmg" />
 			</fileset>
@@ -303,7 +305,7 @@
 			<commit file="./releases/OSXintelCarbonStartAnalyseInstaller.dmg" message="Commited from ant file" />
 		</svn>-->
 
-		<ftp server="139.124.68.1" userid="buloup" password="slqb9999" remotedir="Sites/documents" passive="yes">
+		<ftp server="${ftp.ip}" userid="${ftp.login}" password="${ftp.password}" remotedir="Sites/documents" passive="no">
 			<fileset dir="./releases">
 				<include name="OSXintelCarbonStartAnalyseInstaller.dmg" />
 			</fileset>

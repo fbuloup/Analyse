@@ -3,6 +3,8 @@
 	<!--this file was created by Eclipse Runnable JAR Export Wizard-->
 	<!--ANT 1.7 is required                                        -->
 
+	<include file = "FtpLoginProperties.xml" as="FtpProperties"/>
+	
 	<property name="RELEASE_NAME" value="WINDOWS_ANALYSE_RELEASE" />
 	<property name="RELEASE_DIRECTORY" value="${workspace.loc}/WINDOWS_ANALYSE_RELEASE/" />
 	<property name="NATIVE_LAUNCHER_DIRECTORY" value="${workspace.loc}/natives-analyse-launchers/startAnalyse/bin/windows/" />
@@ -151,9 +153,9 @@
 
 	</target>
 
-	<target name="Commit_changes_to_server">
+	<target name="Commit_changes_to_server"  depends="FtpProperties.FTP_INPUT">
 		<!-- Upload to ftp server -->
-		<ftp server="139.124.68.1" passive="yes" remotedir="/FTPRoot/Users/buloup/Sites/documents/Analyse/${FTP_RELEASE_FOLDER}" userid="buloup" password="slqb9999" depends="no">
+		<ftp server="${ftp.ip}" passive="no" remotedir="${ftp.base.remotedir}/Analyse/${FTP_RELEASE_FOLDER}" userid="${ftp.login}" password="${ftp.password}" depends="no">
 			<fileset dir="${RELEASE_DIRECTORY}" excludes=".project" />
 		</ftp>
 	</target>
