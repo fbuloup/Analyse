@@ -3,6 +3,8 @@
 	<!--this file was created by Eclipse Runnable JAR Export Wizard-->
 	<!--ANT 1.7 is required                                        -->
 
+	<include file = "FtpLoginProperties.xml" as="FtpProperties"/>
+	
 	<property name="RELEASE_NAME" value="MACOSX_INTEL_ANALYSE_RELEASE" />
 	<property name="RELEASE_DIRECTORY" value="${workspace.loc}/MACOSX_INTEL_ANALYSE_RELEASE/" />
 	<property name="NATIVE_LAUNCHER_DIRECTORY" value="..\natives-analyse-launchers\startAnalyse\bin\macintel\" />
@@ -36,17 +38,17 @@
 				<attribute name="Rsrc-Main-Class" value="analyse.AnalyseApplication" />
 				<attribute name="Class-Path" value="." />
 				<attribute name="Rsrc-Class-Path" value="./ 				
-					org.eclipse.swt.cocoa.macosx.x86_64_3.7.2.v3740f.jar 
-					org.eclipse.jface_3.7.0.v20110928-1505.jar 
-					org.eclipse.core.commands_3.6.0.I20110111-0800.jar 
-					org.eclipse.osgi_3.7.2.v20120110-1415.jar 
-					org.eclipse.equinox.common_3.6.0.v20110523.jar 
-					org.eclipse.ui.forms_3.5.101.v20111011-1919.jar 
-					com.ibm.icu_4.4.2.v20110823.jar 
-					org.eclipse.text_3.5.101.v20110928-1504.jar 
-					org.eclipse.jface.text_3.7.2.v20111213-1208.jar 
-					org.eclipse.core.runtime_3.7.0.v20110110.jar 					
-					jawin.jar 
+					org.eclipse.swt.cocoa.macosx.x86_64_3.113.0.v20191204-0601.jar
+					org.eclipse.jface_3.18.0.v20191122-2109.jar
+					org.eclipse.equinox.common_3.10.600.v20191004-1420.jar
+					org.eclipse.core.commands_3.9.600.v20191122-2109.jar
+					org.eclipse.osgi_3.15.100.v20191114-1701.jar
+					org.eclipse.ui.forms_3.8.200.v20191114-0830.jar
+					com.ibm.icu_64.2.0.v20190507-1337.jar
+					org.eclipse.jface.text_3.16.100.v20191203-1634.jar
+					org.eclipse.text_3.10.0.v20191122-2108.jar
+					org.eclipse.core.runtime_3.17.0.v20191122-2104.jar
+					jacob.jar
 					ant.jar 					
 					commons-net-2.2.jar 
 					ftplet-api-1.0.5.jar 
@@ -69,16 +71,16 @@
 			<zipfileset src="jar-in-jar-loader.zip" />
 			<fileset dir="./bin" />
 			<fileset dir="../swtchart/bin" />
-			<zipfileset dir="${eclipse.home}plugins" includes="org.eclipse.jface_3.7.0.v20110928-1505.jar" />
-			<zipfileset dir="${eclipse.home}plugins" includes="org.eclipse.swt.cocoa.macosx.x86_64_3.7.2.v3740f.jar" />
-			<zipfileset dir="${eclipse.home}plugins" includes="org.eclipse.osgi_3.7.2.v20120110-1415.jar" />
-			<zipfileset dir="${eclipse.home}plugins" includes="org.eclipse.equinox.common_3.6.0.v20110523.jar" />
-			<zipfileset dir="${eclipse.home}plugins" includes="org.eclipse.core.commands_3.6.0.I20110111-0800.jar" />
-			<zipfileset dir="${eclipse.home}plugins" includes="org.eclipse.ui.forms_3.5.101.v20111011-1919.jar" />
-			<zipfileset dir="${eclipse.home}plugins" includes="com.ibm.icu_4.4.2.v20110823.jar" />
-			<zipfileset dir="${eclipse.home}plugins" includes="org.eclipse.jface.text_3.7.2.v20111213-1208.jar" />
-			<zipfileset dir="${eclipse.home}plugins" includes="org.eclipse.text_3.5.101.v20110928-1504.jar" />
-			<zipfileset dir="${eclipse.home}plugins" includes="org.eclipse.core.runtime_3.7.0.v20110110.jar" />
+			<zipfileset dir="${eclipse.home}plugins" includes="org.eclipse.swt.cocoa.macosx.x86_64_3.113.0.v20191204-0601.jar" />
+			<zipfileset dir="${eclipse.home}plugins" includes="org.eclipse.jface_3.18.0.v20191122-2109.jar" />
+			<zipfileset dir="${eclipse.home}plugins" includes="org.eclipse.equinox.common_3.10.600.v20191004-1420.jar" />
+			<zipfileset dir="${eclipse.home}plugins" includes="org.eclipse.core.commands_3.9.600.v20191122-2109.jar" />
+			<zipfileset dir="${eclipse.home}plugins" includes="org.eclipse.osgi_3.15.100.v20191114-1701.jar" />
+			<zipfileset dir="${eclipse.home}plugins" includes="org.eclipse.ui.forms_3.8.200.v20191114-0830.jar" />
+			<zipfileset dir="${eclipse.home}plugins" includes="com.ibm.icu_64.2.0.v20190507-1337.jar" />
+			<zipfileset dir="${eclipse.home}plugins" includes="org.eclipse.jface.text_3.16.100.v20191203-1634.jar" />
+			<zipfileset dir="${eclipse.home}plugins" includes="org.eclipse.text_3.10.0.v20191122-2108.jar" />
+			<zipfileset dir="${eclipse.home}plugins" includes="org.eclipse.core.runtime_3.17.0.v20191122-2104.jar" />
 			<zipfileset dir="./libs" includes="ant.jar" />
 			<zipfileset dir="./libs/ftpserver" includes="commons-net-2.2.jar" />
 			<zipfileset dir="./libs/ftpserver" includes="ftplet-api-1.0.5.jar" />
@@ -159,9 +161,9 @@
 
 	</target>
 
-	<target name="Commit_changes_to_server">
+	<target name="Commit_changes_to_server"  depends="FtpProperties.FTP_INPUT">
 		<!-- Upload to ftp server -->
-		<ftp server="139.124.68.1" passive="yes" remotedir="/FTPRoot/Users/buloup/Sites/documents/Analyse/${FTP_RELEASE_FOLDER}" userid="buloup" password="slqb9999" depends="no">
+		<ftp server="${ftp.ip}" passive="no" remotedir="${ftp.base.remotedir}/Analyse/${FTP_RELEASE_FOLDER}" userid="${ftp.login}" password="${ftp.password}" depends="no">
 			<fileset dir="${RELEASE_DIRECTORY}" excludes=".project,.DS_STORE" />
 		</ftp>
 	</target>
