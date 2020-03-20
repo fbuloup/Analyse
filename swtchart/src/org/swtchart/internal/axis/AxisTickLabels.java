@@ -333,7 +333,9 @@ public class AxisTickLabels implements PaintListener {
         int digitMin = (int) Math.ceil(Math.log10(min));
         int digitMax = (int) Math.ceil(Math.log10(max));
 
-        final BigDecimal MIN = new BigDecimal(new Double(min).toString());
+        
+        
+        final BigDecimal MIN = new BigDecimal(Double.valueOf(min).toString());
         BigDecimal tickStep = pow(10, digitMin - 1);
         BigDecimal firstPosition;
 
@@ -392,7 +394,7 @@ public class AxisTickLabels implements PaintListener {
         double min = axis.getRange().lower;
         double max = axis.getRange().upper;
 
-        final BigDecimal MIN = new BigDecimal(new Double(min).toString());
+        final BigDecimal MIN = new BigDecimal(Double.valueOf(min).toString());
         BigDecimal firstPosition;
 
         /* if (min % tickStep <= 0) */
@@ -407,7 +409,7 @@ public class AxisTickLabels implements PaintListener {
         // the unit time starts from 1:00
         if (axis.isDateEnabled()) {
             BigDecimal zeroOclock = firstPosition.subtract(new BigDecimal(
-                    new Double(3600000).toString()));
+            		Double.valueOf(3600000).toString()));
             if (MIN.compareTo(zeroOclock) == -1) {
                 firstPosition = zeroOclock;
             }
@@ -621,10 +623,9 @@ public class AxisTickLabels implements PaintListener {
     private BigDecimal pow(double base, int expornent) {
         BigDecimal value;
         if (expornent > 0) {
-            value = new BigDecimal(new Double(base).toString()).pow(expornent);
+            value = new BigDecimal(Double.valueOf(base).toString()).pow(expornent);
         } else {
-            value = BigDecimal.ONE.divide(new BigDecimal(new Double(base)
-                    .toString()).pow(-expornent));
+            value = BigDecimal.ONE.divide(new BigDecimal(Double.valueOf(base).toString()).pow(-expornent));
         }
         return value;
     }
@@ -676,11 +677,11 @@ public class AxisTickLabels implements PaintListener {
             gridStep = BigDecimal.TEN.multiply(pow(10, exponent));
         } else if (mantissa > 3.5) {
             // gridStep = 5.0 * 10 ** exponent
-            gridStep = new BigDecimal(new Double(5).toString()).multiply(pow(
+            gridStep = new BigDecimal(Double.valueOf(5).toString()).multiply(pow(
                     10, exponent));
         } else if (mantissa > 1.5) {
             // gridStep = 2.0 * 10 ** exponent
-            gridStep = new BigDecimal(new Double(2).toString()).multiply(pow(
+            gridStep = new BigDecimal(Double.valueOf(2).toString()).multiply(pow(
                     10, exponent));
         } else {
             // gridStep = 1.0 * 10 ** exponent
