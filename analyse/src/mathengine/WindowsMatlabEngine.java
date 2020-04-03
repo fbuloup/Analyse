@@ -1006,6 +1006,7 @@ public final class WindowsMatlabEngine implements IMathEngine {
 		response = response.replaceAll("^ans\\s*=\\s*", "");
 		response = response.replaceAll("=", "");
 		response = response.replaceAll("\\d+x\\d+cellarray", "");
+		response = response.replaceAll("\\d+x\\d+emptychararray", "");
 		response = response.replaceAll(">", "");
 		return response;
 	}
@@ -1047,7 +1048,7 @@ public final class WindowsMatlabEngine implements IMathEngine {
 					String message = matlabAutomationServer.invoke("Execute", cmd).getString();
 					message = message.replaceAll("\\n", "");
 					message = message.replaceAll("^ans(\\s)*=(\\s)*", "");
-					message = message.replaceAll("0x0 empty char array", "");
+					message = clearStringValue(message);
 					message = message.replaceAll("''", "");
 					if(!message.equals("")) logger.IlogErrorMessage(message);
 //					matlabAutomationServer.invoke("Execute", "clear " + varName + ";");
@@ -1147,6 +1148,8 @@ public final class WindowsMatlabEngine implements IMathEngine {
 			if(createdSignalsNames.split("=").length > 1) { //$NON-NLS-1$
 				createdSignalsNames = createdSignalsNames.split("=")[1];			 //$NON-NLS-1$
 				createdSignalsNames = clearStringValue(createdSignalsNames);
+				createdSignalsNames = createdSignalsNames.replaceAll("^'", "");	
+				createdSignalsNames = createdSignalsNames.replaceAll("'$", "");	
 				createdSignalsNames = createdSignalsNames.replaceAll("^:", "");		 //$NON-NLS-1$ //$NON-NLS-2$
 				createdSignalsNames = createdSignalsNames.replaceAll("''", ""); //$NON-NLS-1$ //$NON-NLS-2$
 				cmdLine = "clear createdSignalsNames;";	 //$NON-NLS-1$
@@ -1161,6 +1164,8 @@ public final class WindowsMatlabEngine implements IMathEngine {
 			if(createdMarkersNames.split("=").length > 1) { //$NON-NLS-1$
 				createdMarkersNames = createdMarkersNames.split("=")[1];	 //$NON-NLS-1$
 				createdMarkersNames = clearStringValue(createdMarkersNames);
+				createdMarkersNames = createdMarkersNames.replaceAll("^'", "");	
+				createdMarkersNames = createdMarkersNames.replaceAll("'$", "");	
 				createdMarkersNames = createdMarkersNames.replaceAll("^:", "");	 //$NON-NLS-1$ //$NON-NLS-2$
 				createdMarkersNames = createdMarkersNames.replaceAll("''", ""); //$NON-NLS-1$ //$NON-NLS-2$
 				cmdLine = "clear createdMarkersNames;";	 //$NON-NLS-1$
@@ -1175,6 +1180,8 @@ public final class WindowsMatlabEngine implements IMathEngine {
 			if(createdFieldsNames.split("=").length > 1) { //$NON-NLS-1$
 				createdFieldsNames = createdFieldsNames.split("=")[1];			 //$NON-NLS-1$
 				createdFieldsNames = clearStringValue(createdFieldsNames);
+				createdFieldsNames = createdFieldsNames.replaceAll("^'", "");	
+				createdFieldsNames = createdFieldsNames.replaceAll("'$", "");	
 				createdFieldsNames = createdFieldsNames.replaceAll("^:", "");		 //$NON-NLS-1$ //$NON-NLS-2$
 				createdFieldsNames = createdFieldsNames.replaceAll("''", ""); //$NON-NLS-1$ //$NON-NLS-2$
 				cmdLine = "clear createdFieldsNames;";	 //$NON-NLS-1$
@@ -1189,6 +1196,8 @@ public final class WindowsMatlabEngine implements IMathEngine {
 			if(modifiedSignalsNames.split("=").length > 1) { //$NON-NLS-1$
 				modifiedSignalsNames = modifiedSignalsNames.split("=")[1];			 //$NON-NLS-1$
 				modifiedSignalsNames = clearStringValue(modifiedSignalsNames);
+				modifiedSignalsNames = modifiedSignalsNames.replaceAll("^'", "");	
+				modifiedSignalsNames = modifiedSignalsNames.replaceAll("'$", "");	
 				modifiedSignalsNames = modifiedSignalsNames.replaceAll("^:", "");		 //$NON-NLS-1$ //$NON-NLS-2$
 				modifiedSignalsNames = modifiedSignalsNames.replaceAll("''", ""); //$NON-NLS-1$ //$NON-NLS-2$
 				cmdLine = "clear modifiedSignalsNames;";	 //$NON-NLS-1$

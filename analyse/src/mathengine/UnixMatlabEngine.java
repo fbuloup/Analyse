@@ -1054,8 +1054,8 @@ public final class UnixMatlabEngine implements IMathEngine {
 			if(createdMarkersNames.split("=").length > 1) { //$NON-NLS-1$
 				createdMarkersNames = createdMarkersNames.split("=")[1];	 //$NON-NLS-1$
 				createdMarkersNames = clearStringValue(createdMarkersNames);
-				createdMarkersNames = createdSignalsNames.replaceAll("^'", "");	
-				createdMarkersNames = createdSignalsNames.replaceAll("'$", "");	
+				createdMarkersNames = createdMarkersNames.replaceAll("^'", "");	
+				createdMarkersNames = createdMarkersNames.replaceAll("'$", "");	
 				createdMarkersNames = createdMarkersNames.replaceAll("^:", "");	 //$NON-NLS-1$ //$NON-NLS-2$
 				createdMarkersNames = createdMarkersNames.replaceAll("''", "");		 //$NON-NLS-1$ //$NON-NLS-2$
 				cmdLine = "clear createdMarkersNames;";	 //$NON-NLS-1$
@@ -1070,8 +1070,8 @@ public final class UnixMatlabEngine implements IMathEngine {
 			if(createdFieldsNames.split("=").length > 1) { //$NON-NLS-1$
 				createdFieldsNames = createdFieldsNames.split("=")[1];			 //$NON-NLS-1$
 				createdFieldsNames = clearStringValue(createdFieldsNames);
-				createdFieldsNames = createdSignalsNames.replaceAll("^'", "");	
-				createdFieldsNames = createdSignalsNames.replaceAll("'$", "");	
+				createdFieldsNames = createdFieldsNames.replaceAll("^'", "");	
+				createdFieldsNames = createdFieldsNames.replaceAll("'$", "");	
 				createdFieldsNames = createdFieldsNames.replaceAll("^:", "");		 //$NON-NLS-1$ //$NON-NLS-2$
 				createdFieldsNames = createdFieldsNames.replaceAll("''", "");		 //$NON-NLS-1$ //$NON-NLS-2$
 				cmdLine = "clear createdFieldsNames;";	 //$NON-NLS-1$
@@ -1086,8 +1086,8 @@ public final class UnixMatlabEngine implements IMathEngine {
 			if(modifiedSignalsNames.split("=").length > 1) { //$NON-NLS-1$
 				modifiedSignalsNames = modifiedSignalsNames.split("=")[1];			 //$NON-NLS-1$
 				modifiedSignalsNames = clearStringValue(modifiedSignalsNames);
-				modifiedSignalsNames = createdSignalsNames.replaceAll("^'", "");	
-				modifiedSignalsNames = createdSignalsNames.replaceAll("'$", "");	
+				modifiedSignalsNames = modifiedSignalsNames.replaceAll("^'", "");	
+				modifiedSignalsNames = modifiedSignalsNames.replaceAll("'$", "");	
 				modifiedSignalsNames = modifiedSignalsNames.replaceAll("^:", "");		 //$NON-NLS-1$ //$NON-NLS-2$
 				modifiedSignalsNames = modifiedSignalsNames.replaceAll("''", ""); //$NON-NLS-1$ //$NON-NLS-2$
 				cmdLine = "clear modifiedSignalsNames;";	 //$NON-NLS-1$
