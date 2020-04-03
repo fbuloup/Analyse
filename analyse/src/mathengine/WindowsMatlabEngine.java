@@ -1047,7 +1047,9 @@ public final class WindowsMatlabEngine implements IMathEngine {
 					String message = matlabAutomationServer.invoke("Execute", cmd).getString();
 					message = message.replaceAll("\\n", "");
 					message = message.replaceAll("^ans(\\s)*=(\\s)*", "");
-					if(!message.equals("''")) logger.IlogErrorMessage(message);
+					message = message.replaceAll("0x0 empty char array", "");
+					message = message.replaceAll("''", "");
+					if(!message.equals("")) logger.IlogErrorMessage(message);
 //					matlabAutomationServer.invoke("Execute", "clear " + varName + ";");
 					matlabAutomationServer.invoke("Execute","clear " + varName + ";");
 					if(mainVersion < 7)
