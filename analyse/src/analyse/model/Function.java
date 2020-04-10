@@ -900,7 +900,7 @@ public class Function implements Serializable {
 		if(getMarkersUsedNumber() > 0) {
 			for (int i = 0; i < getMarkersNbUplets(); i++) {
 				String value = getMarkersNamesList(i);
-				value = value.replaceAll("_Values - [A-Za-z0-9_]*", "");//$NON-NLS-1$ //$NON-NLS-2$ 
+				value = value.replaceAll("_Values - '?[A-Za-z0-9_]*'?", "");//$NON-NLS-1$ //$NON-NLS-2$ 
 				value = value.replaceAll("0 - [A-Za-z0-9\\s]*", "0");//$NON-NLS-1$ //$NON-NLS-2$ 
 				value = value.replaceAll("Inf - [A-Za-z0-9\\s]*", "Inf");//$NON-NLS-1$ //$NON-NLS-2$ 
 				markersString = markersString + value + ":"; //$NON-NLS-1$
@@ -911,7 +911,7 @@ public class Function implements Serializable {
 		 		
 		String fieldsString = "'"; //$NON-NLS-1$
 		if(getFieldsUsedNumber() > 0) {
-			for (int i = 0; i < getFieldsNbUplets(); i++) fieldsString = fieldsString + getFieldsNamesList(i).replaceAll("_Values - [A-Za-z0-9]*$", "") + ":" ; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+			for (int i = 0; i < getFieldsNbUplets(); i++) fieldsString = fieldsString + getFieldsNamesList(i).replaceAll("_Values - '?[A-Za-z0-9]*'?$", "") + ":" ; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 			fieldsString = fieldsString.replaceAll(":$", ""); //$NON-NLS-1$ //$NON-NLS-2$
 		}
 		fieldsString = fieldsString + "'"; //$NON-NLS-1$
