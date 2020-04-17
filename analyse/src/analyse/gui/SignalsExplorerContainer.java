@@ -450,10 +450,13 @@ public final class SignalsExplorerContainer extends SashForm implements ISelecti
 						if(msfDialog.open() == Dialog.OK) {
 							sf = msfDialog.getSampleFrequency();
 							mathEngine.setSampleFrequency(fullSignalName, sf);
+							((Subject)signalsListViewer.getInput()).setModified(true);
 							sampleFrequencyValuelabel.setText(String.valueOf(sf) + " Hz");
 							int value = mathEngine.getNbSamples(fullSignalName, selectedTrialValueCombo.getSelectionIndex() + 1);
 							double duration = value / mathEngine.getSampleFrequency(fullSignalName);
 							durationValueLabel.setText(String.valueOf(duration) + " s");
+							
+							Experiments.notifyObservers(IResourceObserver.SAMPLE_FREQUENCY_CHANGED, new IResource[]{(Subject)signalsListViewer.getInput()});
 						}
 					}
 				}
