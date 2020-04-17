@@ -435,15 +435,26 @@ public final class SignalsExplorerContainer extends SashForm implements ISelecti
 			sampleFrequencylabel.setLayoutData(new GridData(SWT.RIGHT,SWT.CENTER,false,false));
 			sampleFrequencyValuelabel = new CLabel(topContainer, SWT.NONE);
 			sampleFrequencyValuelabel.setLayoutData(new GridData(SWT.FILL,SWT.CENTER,true,false));
-			Button button = new Button(topContainer, SWT.PUSH);
+			Button button = new Button(topContainer, SWT.PUSH | SWT.FLAT);
 			button.setLayoutData(new GridData(SWT.BEGINNING, SWT.CENTER, false, false));
-			button.setText("Modify...");
+			button.setText(Messages.getString("ChartOptionsActions.Modify"));
 			button.addSelectionListener(new SelectionAdapter() {
 				@Override
 				public void widgetSelected(SelectionEvent e) {
-					ModifySampleFrequencyDialog msfDialog = new ModifySampleFrequencyDialog(getShell());
-					if(msfDialog.open() == Dialog.OK) {
-						
+					if(!signalsListViewer.getSelection().isEmpty()) {
+						String signalName  = signalsListViewer.getTable().getItem(signalsListViewer.getTable().getSelectionIndex()).getText();
+						String fullSignalName = ((Subject)signalsListViewer.getInput()).getLocalPath() + "." + signalName;
+						IMathEngine mathEngine = MathEngineFactory.getInstance().getMathEngine();
+						double sf = mathEngine.getSampleFrequency(fullSignalName);
+						ModifySampleFrequencyDialog msfDialog = new ModifySampleFrequencyDialog(getShell(), sf, signalName);
+						if(msfDialog.open() == Dialog.OK) {
+							sf = msfDialog.getSampleFrequency();
+							mathEngine.setSampleFrequency(fullSignalName, sf);
+							sampleFrequencyValuelabel.setText(String.valueOf(sf) + " Hz");
+							int value = mathEngine.getNbSamples(fullSignalName, selectedTrialValueCombo.getSelectionIndex() + 1);
+							double duration = value / mathEngine.getSampleFrequency(fullSignalName);
+							durationValueLabel.setText(String.valueOf(duration) + " s");
+						}
 					}
 				}
 			});

@@ -423,6 +423,11 @@ public class OctaveEngine implements IMathEngine {
 		response = clearStringValue(response);
 		return Double.parseDouble(response);
 	}
+	
+	public void setSampleFrequency(String fullSignalName, double sf) {
+		String cmd = fullSignalName + SampleFrequence + " = " + String.valueOf(sf) + ";";
+		sendCommand(cmd);
+	}
 
 	public boolean isSignal(String fullSignalName) {
 		String response = sendCommand(fullSignalName + isSignal);

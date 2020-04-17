@@ -385,6 +385,11 @@ public final class UnixMatlabEngine implements IMathEngine {
 		return Double.parseDouble(response);
 	}
 
+	public void setSampleFrequency(String fullSignalName, double sf) {
+		String cmd = fullSignalName + SampleFrequence + " = " + String.valueOf(sf) + ";";
+		sendCommand(cmd);
+	}
+
 	public boolean isSignal(String fullSignalName) {
 		String response = sendCommand(fullSignalName + isSignal);
 		response = clearStringValue(response);

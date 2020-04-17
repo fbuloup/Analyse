@@ -434,6 +434,11 @@ public final class WindowsMatlabEngine implements IMathEngine {
 		response = clearStringValue(response);
 		return Double.parseDouble(response);
 	}
+	
+	public void setSampleFrequency(String fullSignalName, double sf) {
+		String cmd = fullSignalName + SampleFrequence + " = " + String.valueOf(sf) + ";";
+		sendCommand(cmd);
+	}
 
 	public String[] getSignalsNames(String fullSubjectName) {
 		String[] channelsNames = getChannelsNames(fullSubjectName);

@@ -1,9 +1,9 @@
 /*******************************************************************************
- * UniversitŽ dÕAix Marseille (AMU) - Centre National de la Recherche Scientifique (CNRS)
+ * Universitï¿½ dï¿½Aix Marseille (AMU) - Centre National de la Recherche Scientifique (CNRS)
  * Copyright 2014 AMU-CNRS All Rights Reserved.
  * 
  * These computer program listings and specifications, herein, are
- * the property of UniversitŽ dÕAix Marseille and CNRS
+ * the property of Universitï¿½ dï¿½Aix Marseille and CNRS
  * shall not be reproduced or copied or used in whole or in part as
  * the basis for manufacture or sale of items without written permission.
  * For a license agreement, please contact:
@@ -77,6 +77,8 @@ public interface IMathEngine {
 	boolean isEventsGroup(String fullEventName);
 	
 	double getSampleFrequency(String fullSignalName);
+	void setSampleFrequency(String fullSignalName, double sf);
+	
 	
 	int getNbMarkersGroups(String fullSignalName);
 	String getMarkersGroupLabel(int markersGroupNumber, String fullSignalName);
