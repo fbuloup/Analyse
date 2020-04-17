@@ -22,6 +22,7 @@ import org.eclipse.jface.action.ActionContributionItem;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.action.Separator;
 import org.eclipse.jface.action.ToolBarManager;
+import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.resource.JFaceResources;
 import org.eclipse.jface.viewers.CellEditor;
@@ -52,11 +53,13 @@ import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.events.MouseEvent;
 import org.eclipse.swt.events.MouseListener;
+import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.TableItem;
@@ -65,6 +68,7 @@ import org.swtchart.ext.ChartMarker;
 import org.swtchart.ext.ChartMarker.MARKER_GRAPHIC_SYMBOL;
 
 import analyse.Log;
+import analyse.gui.dialogs.ModifySampleFrequencyDialog;
 import analyse.model.Experiments;
 import analyse.model.IResourceObserver;
 import analyse.model.IResource;
@@ -332,7 +336,7 @@ public final class SignalsExplorerContainer extends SashForm implements ISelecti
 				public void controlMoved(ControlEvent e) {
 				}
 			});
-			topContainer.setLayout(new GridLayout(2,false));
+			topContainer.setLayout(new GridLayout(3,false));
 			
 			CLabel selectedSubjectlabel = new CLabel(topContainer, SWT.NONE);
 			selectedSubjectlabel.setText(Messages.getString("SelectedSubject"));
@@ -340,11 +344,11 @@ public final class SignalsExplorerContainer extends SashForm implements ISelecti
 			subjectNamelabel = new CLabel(topContainer, SWT.NONE);
 			subjectNamelabel.setText(Messages.getString("NONE"));
 			subjectNamelabel.setToolTipText(Messages.getString("SelectedSubjectToolTip"));
-			subjectNamelabel.setLayoutData(new GridData(SWT.FILL,SWT.CENTER,true,false));
+			subjectNamelabel.setLayoutData(new GridData(SWT.FILL,SWT.CENTER,true,false, 2, 1));
 			
 			signalsListViewer = new TableViewer(topContainer, SWT.BORDER | SWT.V_SCROLL | SWT.H_SCROLL | SWT.MULTI);
 			signalsListViewer.getTable().addFocusListener((FocusListener) getParent());
-			signalsListViewer.getTable().setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true, 2, 1));
+			signalsListViewer.getTable().setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true, 3, 1));
 			signalsListViewer.setContentProvider(new IStructuredContentProvider() {
 				public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {
 				}
@@ -431,12 +435,25 @@ public final class SignalsExplorerContainer extends SashForm implements ISelecti
 			sampleFrequencylabel.setLayoutData(new GridData(SWT.RIGHT,SWT.CENTER,false,false));
 			sampleFrequencyValuelabel = new CLabel(topContainer, SWT.NONE);
 			sampleFrequencyValuelabel.setLayoutData(new GridData(SWT.FILL,SWT.CENTER,true,false));
+			Button button = new Button(topContainer, SWT.PUSH);
+			button.setLayoutData(new GridData(SWT.BEGINNING, SWT.CENTER, false, false));
+			button.setText("Modify...");
+			button.addSelectionListener(new SelectionAdapter() {
+				@Override
+				public void widgetSelected(SelectionEvent e) {
+					ModifySampleFrequencyDialog msfDialog = new ModifySampleFrequencyDialog(getShell());
+					if(msfDialog.open() == Dialog.OK) {
+						
+					}
+				}
+			});
+			
 			
 			CLabel nbTrialslabel = new CLabel(topContainer, SWT.NONE);
 			nbTrialslabel.setText(Messages.getString("ChannelsView.TrialsNumLabelTitle"));
 			nbTrialslabel.setLayoutData(new GridData(SWT.RIGHT,SWT.CENTER,false,false));
 			nbTrialsValuelabel = new CLabel(topContainer, SWT.NONE);
-			nbTrialsValuelabel.setLayoutData(new GridData(SWT.FILL,SWT.CENTER,true,false));
+			nbTrialsValuelabel.setLayoutData(new GridData(SWT.FILL,SWT.CENTER,true,false, 2, 1));
 			
 			trialsFielsMarkersTabFolder = new CTabFolder(this, SWT.NONE);
 			trialsFielsMarkersTabFolder.setLayoutData(new GridData(SWT.FILL,SWT.FILL,true,true,2,1));
