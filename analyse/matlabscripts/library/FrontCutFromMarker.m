@@ -1,10 +1,10 @@
-%This function modify end cut value of selected signals from an input marker. 
-%End cut is a duration at the end of signal that have not to be displayed in charts.function FrontCutFromMarker (TrialsList , signalsNamesList, markersNamesList, fieldsNamesList, signalsNamesSuffix, newMarkersNamesList, newFieldsNamesList, signalsModifiedNumber)
+%This function modify front cut value of selected signals from an input marker. 
+%Front cut is a duration at the begining of signal that have not to be displayed in charts.function FrontCutFromMarker (TrialsList , signalsNamesList, markersNamesList, fieldsNamesList, signalsNamesSuffix, newMarkersNamesList, newFieldsNamesList, signalsModifiedNumber)
 %beginAnalyseHeader
-%GUIFunctionName = End Cut
+%GUIFunctionName = Front Cut From Marker
 %MatlabFunctionName = FrontCutFromMarker
-%ShortDescritpion = <p>This function modify end cut value of selected signals from an input marker</p>
-%LongDescription = <p>This function modify end cut value of selected signals from an input marker. End cut is a duration at the end of signal that have not to be displayed in charts.</p>
+%ShortDescritpion = <p>This function modify front cut value of selected signals from an input marker</p>
+%LongDescription = <p>This function modify front cut value of selected signals from an input marker. Front cut is a duration a the beginning of signal that have not to be displayed in charts.</p>
 %SignalsUsedNumber = 1
 %MarkersUsedNumber = 1
 %FieldsUsedNumber = 0
@@ -582,6 +582,13 @@ for TrialNumber = TrialsList
 	end
 	
 end
+
+
+
+
+
+
+
 
 
 %endFunction

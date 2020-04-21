@@ -1,7 +1,7 @@
 %This function modify end cut value of selected signals from an input marker. 
 %End cut is a duration at the end of signal that have not to be displayed in charts.function EndCutFromMarker (TrialsList , signalsNamesList, markersNamesList, fieldsNamesList, signalsNamesSuffix, newMarkersNamesList, newFieldsNamesList, signalsModifiedNumber)
 %beginAnalyseHeader
-%GUIFunctionName = End Cut
+%GUIFunctionName = End Cut From Marker
 %MatlabFunctionName = EndCutFromMarker
 %ShortDescritpion = <p>This function modify end cut value of selected signals from an input marker</p>
 %LongDescription = <p>This function modify end cut value of selected signals from an input marker. End cut is a duration at the end of signal that have not to be displayed in charts.</p>
@@ -582,6 +582,7 @@ for TrialNumber = TrialsList
 	end
 	
 end
+
 
 
 %endFunction
