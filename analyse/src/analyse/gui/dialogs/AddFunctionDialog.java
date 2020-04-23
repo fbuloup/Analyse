@@ -62,8 +62,9 @@ public class AddFunctionDialog extends TitleAreaDialog {
 			Node currentNode = (Node)element;	
 			boolean isFunction =  currentNode.getAttributes().getNamedItem(LibraryPreferences.functionNameAttribute) != null;
 			if(isFunction) {
-				String match = filterText.getText();
-				if(!match.equals("")) return currentNode.getAttributes().getNamedItem(LibraryPreferences.functionNameAttribute).getNodeValue().contains(filterText.getText());
+				String match = filterText.getText().toLowerCase();
+				String nodeValue = currentNode.getAttributes().getNamedItem(LibraryPreferences.functionNameAttribute).getNodeValue().toLowerCase();
+				if(!match.equals("")) return nodeValue.contains(match);
 			}
 			return true;
 		}
