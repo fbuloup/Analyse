@@ -62,9 +62,11 @@ import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Image;
+import org.eclipse.swt.graphics.RGB;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
+import org.eclipse.swt.widgets.ColorDialog;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
@@ -434,6 +436,7 @@ public final class TimeChartEditor extends ChartEditor implements IResourceObser
 	protected CLabel serieLabel;
 	private TableViewer signalsFilterTableViewer;
 	private MarkerModifierDelegate markerModifier;
+	private Button categoryColorButton;
 
 	public TimeChartEditor(CTabFolder parent, int style, final Chart chart) {
 		super(parent, style);
@@ -826,7 +829,14 @@ public final class TimeChartEditor extends ChartEditor implements IResourceObser
 			}
 		});
 		
-		categoriesListViewer = new ListViewer(sashForm, SWT.H_SCROLL | SWT.V_SCROLL | SWT.BORDER);
+		Composite categoriesListContainer = new Composite(sashForm, SWT.NORMAL);
+		categoriesListContainer.setLayoutData(new GridData(SWT.FILL,SWT.FILL,true,true,2,1));
+		categoriesListContainer.setLayout(new GridLayout(2, false));
+		GridLayout gl = (GridLayout) categoriesListContainer.getLayout();
+		gl.marginHeight = 0;
+		gl.marginWidth = 0;
+		
+		categoriesListViewer = new ListViewer(categoriesListContainer, SWT.H_SCROLL | SWT.V_SCROLL | SWT.BORDER);
 		categoriesListViewer.setSorter(new ViewerSorter());
 		categoriesListViewer.getList().addFocusListener((FocusListener) getParent());
 		categoriesListViewer.getList().setLayoutData(new GridData(SWT.FILL,SWT.FILL,true,true,2,1));
@@ -926,6 +936,27 @@ public final class TimeChartEditor extends ChartEditor implements IResourceObser
 			}
 		});
 		
+		CLabel categoryColorLabel = new CLabel(categoriesListContainer, SWT.NONE);
+		categoryColorLabel.setLayoutData(new GridData(SWT.RIGHT,SWT.FILL,false,false,1,1));
+		categoryColorLabel.setText("Select category color :");
+		
+		categoryColorButton = new Button(categoriesListContainer, SWT.NORMAL);
+		categoryColorButton.setLayoutData(new GridData(SWT.FILL,SWT.FILL,true,false,1,1));
+		categoryColorButton.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				ColorDialog colorDialog = new ColorDialog(getSWTChart().getShell());
+				colorDialog.setText("Choose a color : ");
+				colorDialog.setRGB(categoryColorButton.getBackground().getRGB());
+				RGB rgbColor = colorDialog.open();
+				if(rgbColor != null) {
+					categoryColorButton.setBackground(new Color(getDisplay(), rgbColor));
+					categoriesListViewer.setData(categoriesListViewer.getStructuredSelection().getFirstElement().toString(), rgbColor);
+				}
+			}
+		});
+		
+		
 
 		sashForm.setWeights(new int[]{25,75});
 		
@@ -937,6 +968,14 @@ public final class TimeChartEditor extends ChartEditor implements IResourceObser
 		signalsTableViewer.getTable().deselectAll();
 		trialsTableViewer.getTable().deselectAll();
 		for (int i = 0; i < trialsTableViewer.getTable().getItems().length; i++) trialsTableViewer.getTable().getItems()[i].setChecked(false);
+		 
+		if(categoriesListViewer.getStructuredSelection().getFirstElement() != null) {
+			String key = categoriesListViewer.getStructuredSelection().getFirstElement().toString();
+			RGB rgbColor = (RGB) categoriesListViewer.getData(key);
+			categoryColorButton.getBackground().dispose();
+			categoryColorButton.setBackground(new Color(getDisplay(), rgbColor));
+		}
+		
 		updateChart();
 	}
 
@@ -1555,6 +1594,20 @@ public final class TimeChartEditor extends ChartEditor implements IResourceObser
 			for (int j = 0; j < x.length; j++) x[j] = (frontCut[trialNumber-1] - 1 + j)/sf;
 			ILineSeries lineSerie = (ILineSeries) swtChart.createSerie(SeriesType.LINE, serieID);
 			lineSerie.setSymbolType(PlotSymbolType.NONE);
+			
+			Color serieColor = ColorsUtils.getRandomColor();
+			if(chartOptionsTabFolder.getSelection() == categoriesTabItem) {
+				if(!categoriesListViewer.getStructuredSelection().isEmpty()) {
+					IStructuredSelection selection = categoriesListViewer.getStructuredSelection();
+					for (Object item : selection) {
+						Object color = categoriesListViewer.getData(item.toString());
+						int[] trials = mathEngine.getTrialsListForCategory(item.toString());
+						System.out.println(color);
+						System.out.println(trials);
+					}
+				}
+			}
+			
 			lineSerie.setLineColor(ColorsUtils.getRandomColor());
 			lineSerie.setLineWidth(2);
 			lineSerie.setYSeries(y);

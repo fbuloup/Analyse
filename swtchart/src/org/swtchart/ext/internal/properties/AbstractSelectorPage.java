@@ -118,7 +118,7 @@ abstract public class AbstractSelectorPage extends AbstractPage {
         layout.marginWidth = 0;
         leftPanel.setLayout(layout);
 
-        list = new List(leftPanel, SWT.BORDER);
+        list = new List(leftPanel, SWT.BORDER | SWT.MULTI);
         GridData gridData2 = new GridData(GridData.FILL_BOTH);
         gridData2.horizontalSpan = 1;
         list.setLayoutData(gridData2);
