@@ -17,8 +17,11 @@ package analyse.gui;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 import java.util.TreeSet;
 
 import mathengine.IMathEngine;
@@ -141,7 +144,7 @@ public final class TimeChartEditor extends ChartEditor implements IResourceObser
 					saveSeriesColors = new Color[seriesID.length]; 
 					for (int i = 0; i < seriesID.length; i++) saveSeriesColors[i] = ((ILineSeries)swtChart.getSeriesSet().getSeries(seriesID[i])).getLineColor();
 				}
-				updateChart();
+				updateChart(false);
 			}
 			if(selectedTabItem == categoriesTabItem && !nextPreviousOnlySignals) {
 				int[] indices = categoriesListViewer.getList().getSelectionIndices(); 
@@ -157,7 +160,7 @@ public final class TimeChartEditor extends ChartEditor implements IResourceObser
 					clearSWTChart();
 					categoriesListViewer.getList().setSelection(indices);
 				}
-				updateChart();
+				updateChart(false);
 			}
 			if(selectedTabItem == markersTabItem && !nextPreviousOnlySignals) {
 				int[] indices = markersListViewer.getList().getSelectionIndices(); 
@@ -207,7 +210,7 @@ public final class TimeChartEditor extends ChartEditor implements IResourceObser
 					saveSeriesColors = new Color[seriesID.length]; 
 					for (int i = 0; i < seriesID.length; i++) saveSeriesColors[i] = ((ILineSeries)swtChart.getSeriesSet().getSeries(seriesID[i])).getLineColor();
 				}
-				updateChart();
+				updateChart(false);
 			}
 			if(selectedTabItem == categoriesTabItem){
 				int[] indices = categoriesListViewer.getList().getSelectionIndices(); 
@@ -223,7 +226,7 @@ public final class TimeChartEditor extends ChartEditor implements IResourceObser
 					clearSWTChart();
 					categoriesListViewer.getList().setSelection(indices);
 				}
-				updateChart();
+				updateChart(false);
 			}
 			if(selectedTabItem == markersTabItem) {
 				int[] indices = markersListViewer.getList().getSelectionIndices(); 
@@ -437,6 +440,7 @@ public final class TimeChartEditor extends ChartEditor implements IResourceObser
 	private TableViewer signalsFilterTableViewer;
 	private MarkerModifierDelegate markerModifier;
 	private Button categoryColorButton;
+	private Map<String, Color> colorMap = new HashMap<>();
 
 	public TimeChartEditor(CTabFolder parent, int style, final Chart chart) {
 		super(parent, style);
@@ -815,7 +819,7 @@ public final class TimeChartEditor extends ChartEditor implements IResourceObser
 		});
 		signalsFilterTableViewer.addSelectionChangedListener(new ISelectionChangedListener() {
 			public void selectionChanged(SelectionChangedEvent event) {
-				updateCategoriesHandler();
+				updateCategoriesHandler(false);
 			}
 		});
 		signalsFilterTableViewer.getTable().addFocusListener(new FocusListener() {
@@ -836,7 +840,7 @@ public final class TimeChartEditor extends ChartEditor implements IResourceObser
 		gl.marginHeight = 0;
 		gl.marginWidth = 0;
 		
-		categoriesListViewer = new ListViewer(categoriesListContainer, SWT.H_SCROLL | SWT.V_SCROLL | SWT.BORDER);
+		categoriesListViewer = new ListViewer(categoriesListContainer, SWT.H_SCROLL | SWT.V_SCROLL | SWT.BORDER | SWT.MULTI);
 		categoriesListViewer.setSorter(new ViewerSorter());
 		categoriesListViewer.getList().addFocusListener((FocusListener) getParent());
 		categoriesListViewer.getList().setLayoutData(new GridData(SWT.FILL,SWT.FILL,true,true,2,1));
@@ -922,7 +926,7 @@ public final class TimeChartEditor extends ChartEditor implements IResourceObser
 		});
 		categoriesListViewer.addSelectionChangedListener(new ISelectionChangedListener() {
 			public void selectionChanged(SelectionChangedEvent event) {
-				updateCategoriesHandler();
+				updateCategoriesHandler(false);
 			}
 		});
 		categoriesListViewer.getList().addFocusListener(new FocusListener() {
@@ -950,8 +954,14 @@ public final class TimeChartEditor extends ChartEditor implements IResourceObser
 				colorDialog.setRGB(categoryColorButton.getBackground().getRGB());
 				RGB rgbColor = colorDialog.open();
 				if(rgbColor != null) {
-					categoryColorButton.setBackground(new Color(getDisplay(), rgbColor));
-					categoriesListViewer.setData(categoriesListViewer.getStructuredSelection().getFirstElement().toString(), rgbColor);
+					String key = categoriesListViewer.getStructuredSelection().getFirstElement().toString();
+					Object color = colorMap.get(key);
+					if(color != null) ((Color)color).dispose();
+					Color newColor = new Color(getDisplay(), rgbColor);
+					categoryColorButton.setBackground(newColor);
+					categoryColorButton.setText("");
+					colorMap.put(key, newColor);
+					updateCategoriesHandler(true);
 				}
 			}
 		});
@@ -963,7 +973,7 @@ public final class TimeChartEditor extends ChartEditor implements IResourceObser
 		categoriesTabItem.setControl(categoriesContainer);
 	}
 
-	protected void updateCategoriesHandler() {
+	protected void updateCategoriesHandler(boolean refreshColors) {
 		chart.getData().clear();
 		signalsTableViewer.getTable().deselectAll();
 		trialsTableViewer.getTable().deselectAll();
@@ -971,12 +981,20 @@ public final class TimeChartEditor extends ChartEditor implements IResourceObser
 		 
 		if(categoriesListViewer.getStructuredSelection().getFirstElement() != null) {
 			String key = categoriesListViewer.getStructuredSelection().getFirstElement().toString();
-			RGB rgbColor = (RGB) categoriesListViewer.getData(key);
-			categoryColorButton.getBackground().dispose();
-			categoryColorButton.setBackground(new Color(getDisplay(), rgbColor));
+			Color Color = (Color) colorMap.get(key);
+//			Color previousColor = categoryColorButton.getBackground();
+//			categoryColorButton.getBackground().dispose();
+			if(Color != null) {
+				categoryColorButton.setText("");
+				categoryColorButton.setBackground(Color);
+//				previousColor.dispose();
+			} else {
+				categoryColorButton.setText("N.A.");
+				categoryColorButton.setBackground(getDisplay().getSystemColor(SWT.COLOR_WIDGET_BACKGROUND));
+			}
 		}
 		
-		updateChart();
+		updateChart(refreshColors);
 	}
 
 	private void createSignalsContents(CTabItem signalsTabItem) {
@@ -1150,7 +1168,7 @@ public final class TimeChartEditor extends ChartEditor implements IResourceObser
 							Display.getDefault().syncExec(new Runnable() {
 								public void run() {
 									trialsTableViewer.getTable().setSelection(selectedIndices);
-									updateChart();
+									updateChart(false);
 								}
 							});
 						}
@@ -1216,7 +1234,7 @@ public final class TimeChartEditor extends ChartEditor implements IResourceObser
 		trialsTableViewer.addSelectionChangedListener(new ISelectionChangedListener() {
 			public void selectionChanged(SelectionChangedEvent event) {
 				categoriesListViewer.getList().deselectAll();
-				updateChart();
+				updateChart(false);
 			}
 		});
 //		trialsTableViewer.addCheckStateListener(new ICheckStateListener() {
@@ -1466,7 +1484,7 @@ public final class TimeChartEditor extends ChartEditor implements IResourceObser
 	}
 
 	@SuppressWarnings("unchecked")
-	private void updateChart() {
+	private void updateChart(boolean refreshColors) {
 		IMathEngine mathEngine = MathEngineFactory.getInstance().getMathEngine();
 		DataChart dataChart = chart.getData();
 		ArrayList<String> transientSignals = new ArrayList<String>(0);
@@ -1545,6 +1563,29 @@ public final class TimeChartEditor extends ChartEditor implements IResourceObser
 		if(dataChart.isAutoAdjustAxis()) swtChart.getAxisSet().adjustRange();
 		updateRange();
 		
+		if(refreshColors) {
+			for (ISeries serie : series) {
+				String fullSignalName = serie.getId().replaceAll("\\.\\d+$", "");
+				int trialNumber =  Integer.parseInt(serie.getId().split("\\.")[3]);
+				Color serieColor = ((ILineSeries)serie).getLineColor();
+				if(chartOptionsTabFolder.getSelection() == categoriesTabItem) {
+					if(!categoriesListViewer.getStructuredSelection().isEmpty()) {
+						IStructuredSelection selection = categoriesListViewer.getStructuredSelection();
+						for (Object item : selection) {
+							Object color = colorMap.get(item.toString());
+							String subject = fullSignalName.replaceAll("\\.\\w+$", "");
+							int[] trials = mathEngine.getTrialsListForCategory(subject + "." + item.toString().replaceAll("\\s-.*$", ""));
+							Arrays.sort(trials);
+							if(Arrays.binarySearch(trials, trialNumber) >= 0) {
+								serieColor = color != null ? (Color)color:serieColor;
+							}
+						}
+					}
+				}
+				((ILineSeries)serie).setLineColor(serieColor);
+			}
+		}
+		
 		if(saveSeriesColors.length > 0) {
 			series = swtChart.getSeriesSet().getSeries();
 			String[] seriesID = new String[series.length];
@@ -1600,15 +1641,18 @@ public final class TimeChartEditor extends ChartEditor implements IResourceObser
 				if(!categoriesListViewer.getStructuredSelection().isEmpty()) {
 					IStructuredSelection selection = categoriesListViewer.getStructuredSelection();
 					for (Object item : selection) {
-						Object color = categoriesListViewer.getData(item.toString());
-						int[] trials = mathEngine.getTrialsListForCategory(item.toString());
-						System.out.println(color);
-						System.out.println(trials);
+						Object color = colorMap.get(item.toString());
+						String subject = fullSignalName.replaceAll("\\.\\w+$", "");
+						int[] trials = mathEngine.getTrialsListForCategory(subject + "." + item.toString().replaceAll("\\s-.*$", ""));
+						Arrays.sort(trials);
+						if(Arrays.binarySearch(trials, trialNumber) >= 0) {
+							serieColor = color != null ? (Color)color:serieColor;
+						}
 					}
 				}
 			}
 			
-			lineSerie.setLineColor(ColorsUtils.getRandomColor());
+			lineSerie.setLineColor(serieColor);
 			lineSerie.setLineWidth(2);
 			lineSerie.setYSeries(y);
 			lineSerie.setXSeries(x);
@@ -1684,6 +1728,15 @@ public final class TimeChartEditor extends ChartEditor implements IResourceObser
 		trialsTable.setSelection(-1);
 		categoriesListViewer.getList().setSelection(new String[0]);
 		initChart();
+	}
+	
+	@Override
+	public void dispose() {
+		super.dispose();
+		Set<String> keys = colorMap.keySet();
+		for (String key : keys) {
+			colorMap.get(key).dispose();
+		}
 	}
 	
 }
